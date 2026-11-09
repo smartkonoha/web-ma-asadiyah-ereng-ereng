@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MA As-Adiyah Ereng-Ereng</title>
+</head>
+<body>
+    <h1>Selamat Datang di Website MA As-Adiyah Ereng-Ereng</h1>
+    <p>Data dari Apps Script:</p>
+    <div id="hasil-data">Memuat data...</div>
+
+    <script>
+        const urlAppsScript = "https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxIT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088QgNsLK2A/exec";
+
+        fetch(urlAppsScript)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Data berhasil diambil:", data);
+                document.getElementById("hasil-data").innerText = JSON.stringify(data);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("hasil-data").innerText = "Gagal memuat data.";
+            });
+    </script>
+</body>
+</html>
