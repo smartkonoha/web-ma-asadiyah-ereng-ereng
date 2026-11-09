@@ -1,30 +1,670 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MA As-Adiyah Ereng-Ereng</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MAS. AS'ADIYAH ERENG-ERENG</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --navy-dark: #0A192F;
+      --navy-main: #1E3A8A;
+      --gold-accent: #D97706;
+      --bg-gray: #F8FAFC;
+      --glow-color: rgba(253, 224, 71, 0.4);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden !important;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--bg-gray);
+      color: #334155;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .header-top { background-color: var(--navy-dark); color: #fff; padding: 12px 0; border-bottom: 3px solid var(--gold-accent); }
+    .header-top .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; width: 100%; }
+    
+    .navbar-main { background-color: var(--navy-main); box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1020; width: 100%; }
+    .navbar-main .nav-link { color: #fff !important; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; padding: 10px 16px !important; cursor: pointer; transition: all 0.3s ease; border-radius: 4px; }
+    
+    .navbar-main .nav-link:hover, 
+    .navbar-main .nav-link:focus,
+    .navbar-main .show > .nav-link { 
+      background-color: rgba(255, 255, 255, 0.15); 
+      color: #FDE047 !important; 
+      box-shadow: 0 0 10px var(--glow-color);
+      transform: translateY(-1px);
+    }
+    
+    .hero-image-banner-box {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      margin-bottom: 25px;
+      background-color: #0f172a;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-image-banner-box.slide-up-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-image-banner-box img.banner-utama {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 1220 / 300;
+      object-fit: cover;
+    }
+    
+    .hero-wa-badge-absolute {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      z-index: 10;
+    }
+    .wa-center-pill {
+      display: inline-flex;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .wa-center-pill:hover { transform: scale(1.03); }
+    .wa-label {
+      background-color: #047857;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .wa-number {
+      background-color: #ea580c;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 6px 14px;
+    }
+
+    .news-slider-container {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: auto;
+      padding: 10px 5px 25px 5px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+    .news-slider-container::-webkit-scrollbar { display: none; }
+    .card-vertical-external {
+      flex: 0 0 190px;
+      display: flex;
+      flex-direction: column;
+      background: transparent;
+      transition: transform 0.3s ease;
+    }
+    .card-vertical-external:hover { transform: translateY(-4px); }
+    .card-img-wrapper {
+      width: 100%;
+      height: 240px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-color: #000;
+    }
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .card-text-wrapper { padding: 8px 2px; text-align: left; }
+    .card-text-wrapper .badge-kat {
+      display: inline-block;
+      background-color: var(--navy-main);
+      color: #fff;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .card-text-wrapper h6 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #1E293B;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .slider-nav-wrapper { position: relative; width: 100%; }
+    .btn-slide-control {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      background-color: #ffffff;
+      color: var(--navy-main);
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .btn-prev { left: -8px; }
+    .btn-next { right: -8px; }
+
+    .ticker-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      margin-top: 25px;
+      margin-bottom: 35px;
+      border: 1px solid #e2e8f0;
+      width: 100%;
+    }
+    .ticker-badge {
+      background-color: #047857; 
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 14px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    .ticker-wrap { overflow: hidden; width: 100%; white-space: nowrap; }
+    .ticker-content { display: inline-block; animation: tickerAnimation 30s linear infinite; padding-left: 100%; }
+    .ticker-item { display: inline-block; padding: 0 20px; font-size: 0.85rem; font-weight: 600; color: #334155; }
+    .ticker-item span { color: #047857; font-weight: 700; margin-left: 4px; }
+    @keyframes tickerAnimation {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+
+    .pojok-aser-section {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f8fafc 100%);
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 20px 15px;
+      margin-top: 40px;
+      box-shadow: 0 8px 20px rgba(4, 120, 87, 0.06);
+      width: 100%;
+    }
+    
+    .section-heading-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid #047857;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+    .section-heading-title {
+      font-weight: 800;
+      color: #065f46;
+      font-size: 1.2rem;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .terkini-card {
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .terkini-img-box {
+      width: 100%;
+      height: 190px;
+      background-color: #0f172a;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .terkini-img { width: 100%; height: 100%; object-fit: cover; }
+    .terkini-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .terkini-kat { font-size: 0.65rem; font-weight: 700; color: #047857; text-transform: uppercase; margin-bottom: 6px; display: block; }
+    .terkini-title { font-size: 0.95rem; font-weight: 800; color: #1e293b; line-height: 1.35; margin-bottom: 8px; }
+    .news-date { font-size: 0.75rem; color: #64748b; }
+
+    .popular-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .popular-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .popular-number { font-size: 1.8rem; font-weight: 900; color: #047857; line-height: 1; min-width: 30px; text-align: center; }
+    .popular-content { display: flex; flex-direction: column; }
+    .popular-kat { font-size: 0.6rem; font-weight: 700; color: #047857; text-transform: uppercase; margin-bottom: 2px; }
+    .popular-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .school-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 2px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .social-icon-btn {
+      width: 32px;
+      height: 32px;
+      background-color: #ffffff;
+      color: var(--navy-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      font-size: 0.9rem;
+    }
+    .social-icon-btn:hover { background-color: var(--gold-accent); color: #ffffff; }
+
+    .card-custom { border: none; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); background: #fff; overflow: hidden; width: 100%; }
+    
+    #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+    
+    .footer-custom {
+      background-color: #1a2232;
+      color: #94a3b8;
+      padding: 35px 0 20px 0;
+      margin-top: 40px;
+      border-top: 4px solid var(--gold-accent);
+      font-size: 0.85rem;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-    <h1>Selamat Datang di Website MA As-Adiyah Ereng-Ereng</h1>
-    <p>Data dari Apps Script:</p>
-    <div id="hasil-data">Memuat data...</div>
 
-    <script>
-        // Tambahkan ?source=github di ujung URL
-        const urlAppsScript = "https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxIT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088QgNsLK2A/exec?source=github";
+  <!-- LOADING OVERLAY -->
+  <div id="loadingOverlay">
+    <div class="text-center">
+      <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
+      <h6 class="fw-bold text-dark">Memuat Portal Berita...</h6>
+    </div>
+  </div>
 
-        fetch(urlAppsScript)
-            .then(response => response.json())
-            .then(data => {
-                console.log("Data berhasil diambil:", data);
-                // Menampilkan data JSON ke layar web
-                document.getElementById("hasil-data").innerText = JSON.stringify(data, null, 2);
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                document.getElementById("hasil-data").innerText = "Gagal memuat data.";
-            });
-    </script>
+  <!-- HEADER -->
+  <header class="header-top">
+    <div class="container px-3">
+      <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+        <img id="headerLogo" src="https://via.placeholder.com/50?text=Logo" class="school-logo me-3" alt="Logo Madrasah">
+        <div class="text-start">
+          <h4 class="mb-0 fw-bold text-white fs-6 fs-md-4">MAS. AS'ADIYAH ERENG-ERENG</h4>
+          <small class="text-light fs-7">Kabupaten Bantaeng, Sulawesi Selatan</small>
+        </div>
+      </div>
+      
+      <div class="d-flex align-items-center gap-2 flex-wrap justify-content-center mt-2 mt-md-0">
+        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://whatsapp.com" target="_blank" class="social-icon-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <button class="btn btn-warning btn-sm fw-bold px-3 ms-1" onclick="openLoginModal()"><i class="fa-solid fa-lock me-1"></i> Login</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-main">
+    <div class="container px-3">
+      <button class="navbar-toggler border-0 text-warning px-2 py-1" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <i class="fa-solid fa-bars fs-2"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-lg-items-center gap-1">
+          <li class="nav-item"><a class="nav-link active" onclick="showSection('home')"><i class="fa-solid fa-house me-1"></i> Beranda</a></li>
+          <li class="nav-item" id="navAdminMenu" style="display:none;"><a class="nav-link text-warning fw-bold" onclick="showSection('admin')"><i class="fa-solid fa-sliders me-1"></i> Dashboard Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container my-4 px-3">
+    <div id="section-home" class="page-section">
+      
+      <!-- HERO BANNER -->
+      <div class="hero-image-banner-box">
+        <img src="https://lh3.googleusercontent.com/d/1asnPmHibXD5jeMjthxIdzDaYEHtduFNV" class="banner-utama" alt="Banner">
+        <div class="hero-wa-badge-absolute">
+          <a href="https://wa.me/6281243318115" target="_blank" class="wa-center-pill">
+            <span class="wa-label">WHATSAPP CENTER</span>
+            <span class="wa-number">0812 43318115</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="fw-bold text-dark mb-0 fs-5"><i class="fa-solid fa-newspaper text-primary me-2"></i> Berita & Kegiatan Terbaru</h4>
+      </div>
+      
+      <div class="slider-nav-wrapper px-md-2" id="sliderWrapper">
+        <button class="btn-slide-control btn-prev" onclick="manualScroll(-250)"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="news-slider-container" id="newsSliderContainer"></div>
+        <button class="btn-slide-control btn-next" onclick="manualScroll(250)"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+
+      <div class="ticker-container">
+        <div class="ticker-badge"><i class="fa-solid fa-chart-line me-1"></i> INDEKS</div>
+        <div class="ticker-wrap">
+          <div class="ticker-content" id="tickerContentContainer">
+            <span class="ticker-item">Akreditasi Madrasah <span>A</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pojok-aser-section">
+        <div class="row g-3">
+          <div class="col-lg-8">
+            <div class="section-heading-bar"><h3 class="section-heading-title">TERKINI</h3></div>
+            <div class="row g-3" id="terkiniContainer"></div>
+          </div>
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="section-heading-bar"><h3 class="section-heading-title">TERPOPULER</h3></div>
+            <div class="card card-custom p-3" id="terpopulerContainer"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION ADMIN -->
+    <div id="section-admin" class="page-section d-none">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold text-dark mb-0 fs-4">Dashboard Admin</h3>
+        <button class="btn btn-outline-danger btn-sm" onclick="logoutAdmin()"><i class="fa-solid fa-right-from-bracket me-1"></i> Keluar</button>
+      </div>
+      <div class="card card-custom p-4 mb-4">
+        <h5 class="fw-bold text-primary mb-3">Form Unggah Berita</h5>
+        <form id="formBerita">
+          <div class="mb-3"><label class="form-label fw-bold">Judul</label><input type="text" id="bJudul" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label fw-bold">Kategori</label><input type="text" id="bKategori" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label fw-bold">Tanggal</label><input type="date" id="bTanggal" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label fw-bold">Link Gambar</label><input type="text" id="bGambar" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label fw-bold">Ringkasan</label><textarea id="bRingkasan" class="form-control" rows="2" required></textarea></div>
+          <button type="submit" class="btn btn-primary w-100">Unggah</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer-custom">
+    <div class="container px-3 text-center">
+      <small>© Copyright 2026 - MAS. AS'ADIYAH ERENG-ERENG. All Rights Reserved.</small>
+    </div>
+  </footer>
+
+  <!-- MODAL LOGIN -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header text-white" style="background-color: var(--navy-dark);">
+          <h5 class="modal-title">Login Admin</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="formLogin">
+            <div class="mb-3"><label class="form-label">Username</label><input type="text" id="loginUser" class="form-control" required></div>
+            <div class="mb-3"><label class="form-label">Password</label><input type="password" id="loginPass" class="form-control" required></div>
+            <button type="submit" class="btn btn-primary w-100">Masuk</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let appData = { berita: [], profil: [] };
+    let isHovered = false;
+    let scrollSpeed = 0.5;
+
+    document.addEventListener('DOMContentLoaded', () => { 
+      loadData(); 
+      initSmoothAutoScroll();
+    });
+
+    function loadData() {
+      // URL Apps Script dengan ?source=github
+      const urlAppsScript = "https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxIT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088QgNsLK2A/exec?source=github";
+
+      fetch(urlAppsScript)
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.json();
+        })
+        .then(res => {
+          appData = res;
+          renderHeaderLogo();
+          renderPublicNews();
+          renderTickerData();
+          renderTerkiniDanTerpopuler();
+          
+          document.getElementById('loadingOverlay').style.display = 'none';
+          
+          setTimeout(() => {
+            const bannerBox = document.querySelector('.hero-image-banner-box');
+            if (bannerBox) bannerBox.classList.add('slide-up-active');
+          }, 100);
+        })
+        .catch(err => {
+          console.error("Error fetching data:", err);
+          document.getElementById('loadingOverlay').style.display = 'none';
+        });
+    }
+
+    function fixDriveUrl(url) {
+      if (!url) return '';
+      if (url.includes('drive.google.com')) {
+        let match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        if (match && match[1]) return 'https://lh3.googleusercontent.com/d/' + match[1];
+      }
+      return url;
+    }
+
+    function renderHeaderLogo() {
+      let logoUrl = "https://i.ibb.co.com/39hN7h3/kemenag-logo.png";
+      if (appData.profil && appData.profil.length > 0 && appData.profil[0].logo) {
+        let dbLogo = fixDriveUrl(appData.profil[0].logo);
+        if(dbLogo.trim() !== '') logoUrl = dbLogo;
+      }
+      document.getElementById('headerLogo').src = logoUrl;
+    }
+
+    function renderTickerData() {
+      const tickerContainer = document.getElementById('tickerContentContainer');
+      let defaultItems = [
+        "Akreditasi Madrasah <span>A</span>",
+        "Indeks Kedisiplinan <span>98,5%</span>",
+        "Juara Umum PORPROV <span>2026</span>"
+      ];
+      if (appData.profil && appData.profil.length > 0 && appData.profil[0].indeks) {
+        let customIndeks = appData.profil[0].indeks.split(',');
+        defaultItems = customIndeks.map(item => `<span>${item.trim()}</span>`);
+      }
+      tickerContainer.innerHTML = defaultItems.join(' • ');
+    }
+
+    function manualScroll(direction) {
+      const container = document.getElementById('newsSliderContainer');
+      container.scrollBy({ left: direction, behavior: 'smooth' });
+    }
+
+    function initSmoothAutoScroll() {
+      const container = document.getElementById('newsSliderContainer');
+      const wrapper = document.getElementById('sliderWrapper');
+      if (!container || !wrapper) return;
+
+      wrapper.addEventListener('mouseenter', () => { isHovered = true; });
+      wrapper.addEventListener('mouseleave', () => { isHovered = false; });
+
+      function step() {
+        if (!isHovered) {
+          container.scrollLeft += scrollSpeed;
+          if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 2) {
+            container.scrollLeft = 0;
+          }
+        }
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function renderTerkiniDanTerpopuler() {
+      const terkiniContainer = document.getElementById('terkiniContainer');
+      const terpopulerContainer = document.getElementById('terpopulerContainer');
+
+      if (!appData.berita || appData.berita.length === 0) {
+        terkiniContainer.innerHTML = '<div class="text-muted text-center py-4 col-12">Belum ada berita.</div>';
+        terpopulerContainer.innerHTML = '<div class="text-muted text-center py-4">Belum ada data.</div>';
+        return;
+      }
+
+      let terkiniList = appData.berita.slice(0, 2);
+      terkiniContainer.innerHTML = terkiniList.map(item => {
+        let title = item.judul || item.Judul || 'Kegiatan';
+        let kat = item.kategori || item.Kategori || 'INFORMASI';
+        let img = fixDriveUrl(item.gambar || item.Gambar);
+        let date = item.tanggal || item.Tanggal || '';
+
+        return `
+          <div class="col-md-6">
+            <div class="terkini-card">
+              <div class="terkini-img-box"><img src="${img}" class="terkini-img" onerror="this.src='https://via.placeholder.com/400x220?text=Foto'"></div>
+              <div class="terkini-body">
+                <div><span class="terkini-kat">${kat}</span><h5 class="terkini-title">${title}</h5></div>
+                <span class="news-date"><i class="fa-regular fa-calendar me-1"></i> ${date}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      let popularList = appData.berita.slice(0, 4);
+      terpopulerContainer.innerHTML = popularList.map((item, index) => {
+        let title = item.judul || item.Judul || 'Kegiatan';
+        let kat = item.kategori || item.Kategori || 'Berita';
+        let date = item.tanggal || item.Tanggal || '';
+        return `
+          <div class="popular-item">
+            <div class="popular-number">${index + 1}</div>
+            <div class="popular-content">
+              <span class="popular-kat">${kat}</span>
+              <h6 class="popular-title">${title}</h6>
+              <span class="news-date" style="font-size: 0.7rem;"><i class="fa-regular fa-calendar me-1"></i> ${date}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderPublicNews() {
+      const container = document.getElementById('newsSliderContainer');
+      if (!appData.berita || appData.berita.length === 0) {
+        container.innerHTML = '<div class="text-center text-muted py-5 w-100">Belum ada berita atau kegiatan.</div>';
+        return;
+      }
+
+      container.innerHTML = appData.berita.map(b => {
+        let titleText = b.judul || b.Judul || 'Kegiatan Madrasah';
+        let categoryText = b.kategori || b.Kategori || 'Kegiatan';
+        let imageUrl = fixDriveUrl(b.gambar || b.Gambar);
+
+        return `
+          <div class="card-vertical-external">
+            <div class="card-img-wrapper"><img src="${imageUrl}" onerror="this.src='https://via.placeholder.com/210x280?text=Foto'"></div>
+            <div class="card-text-wrapper">
+              <span class="badge-kat">${categoryText}</span>
+              <h6>${titleText}</h6>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function showSection(secName) {
+      document.querySelectorAll('.page-section').forEach(el => el.classList.add('d-none'));
+      document.getElementById('section-' + secName).classList.remove('d-none');
+    }
+
+    function openLoginModal() { new bootstrap.Modal(document.getElementById('loginModal')).show(); }
+
+    document.getElementById('formLogin').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const u = document.getElementById('loginUser').value;
+      const p = document.getElementById('loginPass').value;
+      fetch(`https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxIT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088QgNsLK2A/exec?source=github&action=login&user=${encodeURIComponent(u)}&pass=${encodeURIComponent(p)}`)
+        .then(res => res.json())
+        .then(res => {
+          if(res.success) {
+            bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+            document.getElementById('navAdminMenu').style.display = 'block';
+            showSection('admin');
+            alert('Berhasil Login!');
+          } else { alert(res.message); }
+        });
+    });
+
+    function logoutAdmin() {
+      document.getElementById('navAdminMenu').style.display = 'none';
+      showSection('home');
+    }
+
+    document.getElementById('formBerita').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Fitur tambah berita aktif.');
+    });
+  </script>
 </body>
 </html>
