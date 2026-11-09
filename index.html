@@ -11,13 +11,15 @@
     <div id="hasil-data">Memuat data...</div>
 
     <script>
-        const urlAppsScript = "https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxIT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088QgNsLK2A/exec";
+        // Tambahkan ?source=github di ujung URL
+        const urlAppsScript = "https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxIT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088QgNsLK2A/exec?source=github";
 
         fetch(urlAppsScript)
             .then(response => response.json())
             .then(data => {
                 console.log("Data berhasil diambil:", data);
-                document.getElementById("hasil-data").innerText = JSON.stringify(data);
+                // Menampilkan data JSON ke layar web
+                document.getElementById("hasil-data").innerText = JSON.stringify(data, null, 2);
             })
             .catch(error => {
                 console.error("Error:", error);
