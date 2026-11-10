@@ -2,262 +2,1272 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MAS. AS'ADIYAH ERENG-ERENG</title>
-  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #0b6623;
-      --accent-color: #d4af37;
-      --bg-light: #f8f9fa;
+      --navy-dark: #0A192F;
+      --navy-main: #1E3A8A;
+      --gold-accent: #D97706;
+      --bg-gray: #F8FAFC;
+      --glow-color: rgba(253, 224, 71, 0.4);
     }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f6f9;
-      color: #333;
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden !important;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--bg-gray);
+      color: #334155;
+      margin: 0;
+      padding: 0;
     }
-    .top-header {
-      background-color: #053b13;
-      color: white;
-      padding: 10px 0;
+    
+    .header-top { background-color: var(--navy-dark); color: #fff; padding: 12px 0; border-bottom: 3px solid var(--gold-accent); }
+    .header-top .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; width: 100%; }
+    
+    /* NAVBAR & DROPDOWN HOVER STYLING */
+    .navbar-main { background-color: var(--navy-main); box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1020; width: 100%; }
+    .navbar-main .nav-link { color: #fff !important; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; padding: 10px 16px !important; cursor: pointer; transition: all 0.3s ease; border-radius: 4px; }
+    
+    .navbar-main .nav-link:hover, 
+    .navbar-main .nav-link:focus,
+    .navbar-main .show > .nav-link { 
+      background-color: rgba(255, 255, 255, 0.15); 
+      color: #FDE047 !important; 
+      box-shadow: 0 0 10px var(--glow-color);
+      transform: translateY(-1px);
     }
-    .main-navbar {
-      background-color: #0b6623;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+    .dropdown-menu {
+      background-color: var(--navy-dark);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      padding: 8px 0;
+      margin-top: 0;
+      opacity: 0;
+      visibility: hidden;
+      display: block;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transform: translateY(10px);
     }
-    .main-navbar .nav-link {
-      color: white !important;
-      font-weight: 600;
-      padding: 12px 18px !important;
+
+    @media (min-width: 992px) {
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
     }
-    .main-navbar .nav-link:hover, .main-navbar .nav-link.active {
-      background-color: rgba(255, 255, 255, 0.15);
-      border-radius: 4px;
+
+    .dropdown-item {
+      color: #cbd5e1 !important;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 8px 20px;
+      transition: all 0.2s ease-in-out;
     }
-    .banner-container {
-      background: #fff;
+
+    .dropdown-item:hover, .dropdown-item:focus {
+      background-color: rgba(217, 119, 6, 0.2);
+      color: #FDE047 !important;
+      padding-left: 24px;
+      box-shadow: inset 3px 0 0 var(--gold-accent);
+    }
+    
+    /* EFEK MELAYANG (SLIDE UP & FADE IN) DIPICU JS SAAT HALAMAN SELESAI DIMUAT */
+    .hero-image-banner-box {
+      position: relative;
+      width: 100%;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       margin-bottom: 25px;
+      background-color: #0f172a;
+      
+      /* Posisi awal tersembunyi di bawah */
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .news-card-slider {
-      border: none;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: white;
-      height: 100%;
+
+    /* Kelas aktif saat dipicu JavaScript */
+    .hero-image-banner-box.slide-up-active {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .news-card-slider:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    }
-    .news-card-slider img {
-      height: 180px;
+
+    .hero-image-banner-box img.banner-utama {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 1220 / 300;
       object-fit: cover;
     }
-    .ticker-bar {
-      background-color: #0b6623;
-      color: white;
-      font-weight: bold;
-      border-radius: 4px;
+    
+    /* TOMBOL WHATSAPP CENTER MELAYANG DI SUDUT KANAN BAWAH BANNER */
+    .hero-wa-badge-absolute {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      z-index: 10;
     }
-    .section-title {
+    .wa-center-pill {
+      display: inline-flex;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .wa-center-pill:hover { transform: scale(1.03); }
+    .wa-label {
+      background-color: #047857;
+      color: #fff;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: #0b6623;
-      position: relative;
+      padding: 6px 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .wa-number {
+      background-color: #ea580c;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 6px 14px;
+    }
+
+    @media (max-width: 576px) {
+      .hero-wa-badge-absolute {
+        bottom: 10px;
+        right: 10px;
+      }
+      .wa-label { font-size: 0.6rem; padding: 4px 8px; }
+      .wa-number { font-size: 0.7rem; padding: 4px 10px; }
+    }
+
+    /* NEWS SLIDER VERTICAL */
+    .news-slider-container {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: auto;
+      padding: 10px 5px 25px 5px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+    .news-slider-container::-webkit-scrollbar { display: none; }
+    .card-vertical-external {
+      flex: 0 0 190px;
+      display: flex;
+      flex-direction: column;
+      background: transparent;
+      transition: transform 0.3s ease;
+    }
+    .card-vertical-external:hover { transform: translateY(-4px); }
+    .card-img-wrapper {
+      width: 100%;
+      height: 240px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-color: #000;
+    }
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .card-text-wrapper { padding: 8px 2px; text-align: left; }
+    .card-text-wrapper .badge-kat {
+      display: inline-block;
+      background-color: var(--navy-main);
+      color: #fff;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .card-text-wrapper h6 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #1E293B;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* SLIDER NAV CONTROLS */
+    .slider-nav-wrapper { position: relative; width: 100%; }
+    .btn-slide-control {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      background-color: #ffffff;
+      color: var(--navy-main);
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .btn-prev { left: -8px; }
+    .btn-next { right: -8px; }
+
+    /* TICKER BAR */
+    .ticker-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      margin-top: 25px;
+      margin-bottom: 35px;
+      border: 1px solid #e2e8f0;
+      width: 100%;
+    }
+    .ticker-badge {
+      background-color: #047857; 
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 14px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    .ticker-wrap { overflow: hidden; width: 100%; white-space: nowrap; }
+    .ticker-content { display: inline-block; animation: tickerAnimation 30s linear infinite; padding-left: 100%; }
+    .ticker-item { display: inline-block; padding: 0 20px; font-size: 0.85rem; font-weight: 600; color: #334155; }
+    .ticker-item span { color: #047857; font-weight: 700; margin-left: 4px; }
+    @keyframes tickerAnimation {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+
+    /* BAGIAN BAWAH INDEKS: TERKINI & TERPOPULER */
+    .pojok-aser-section {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f8fafc 100%);
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 20px 15px;
+      margin-top: 40px;
+      box-shadow: 0 8px 20px rgba(4, 120, 87, 0.06);
+      width: 100%;
+    }
+    
+    .section-heading-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid #047857;
       padding-bottom: 8px;
       margin-bottom: 20px;
-      border-bottom: 3px solid #0b6623;
-      display: inline-block;
     }
-    .feature-card {
-      background: white;
+    .section-heading-title {
+      font-weight: 800;
+      color: #065f46;
+      font-size: 1.2rem;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    .section-heading-link {
+      color: #047857;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    .terkini-card {
+      background: #ffffff;
       border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
       height: 100%;
-      border-top: 4px solid #0b6623;
+      display: flex;
+      flex-direction: column;
     }
-    footer {
-      background-color: #053b13;
-      color: white;
-      padding: 30px 0 15px;
-      margin-top: 50px;
+    .terkini-img-box {
+      width: 100%;
+      height: 190px;
+      background-color: #0f172a;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .terkini-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .terkini-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .terkini-kat {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #047857;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .terkini-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1e293b;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .news-date { font-size: 0.75rem; color: #64748b; }
+
+    .popular-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .popular-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .popular-number {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #047857;
+      line-height: 1;
+      min-width: 30px;
+      text-align: center;
+    }
+    .popular-content { display: flex; flex-direction: column; }
+    .popular-kat { font-size: 0.6rem; font-weight: 700; color: #047857; text-transform: uppercase; margin-bottom: 2px; }
+    .popular-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* SECTION RINGKASAN SARANA */
+    .ringkasan-sarana-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 30px 25px;
+      margin-top: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .sarana-badge-sub {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #047857;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .sarana-main-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+    .sarana-desc {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 0;
+    }
+    .sarana-btn-detail {
+      background-color: #065f46;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .sarana-btn-detail:hover { background-color: #047857; color: #fff; }
+    .sarana-nav-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #334155;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .sarana-nav-btn:hover { background: #f1f5f9; border-color: #94a3b8; }
+    
+    .sarana-slider-box {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 25px;
+    }
+    .sarana-slider-box::-webkit-scrollbar { display: none; }
+    .sarana-card {
+      flex: 0 0 260px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .sarana-card-img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      background-color: #000;
+    }
+    .sarana-card-body { padding: 14px; }
+    .sarana-card-badge {
+      display: inline-block;
+      background-color: #ecfdf5;
+      color: #047857;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      border: 1px solid #bbf7d0;
+    }
+    .sarana-card-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    .sarana-card-info {
+      font-size: 0.75rem;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* SECTION PROGRAM UNGGULAN */
+    .program-unggulan-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 30px 25px;
+      margin-top: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .program-slider-box {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 25px;
+    }
+    .program-slider-box::-webkit-scrollbar { display: none; }
+    .program-card {
+      flex: 0 0 310px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .program-card-img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      background-color: #000;
+    }
+    .program-card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+    .program-card-badge {
+      display: inline-block;
+      background-color: #065f46;
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .program-card-title {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+    .program-card-desc {
+      font-size: 0.8rem;
+      color: #4b5563;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+    .program-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #334155;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 12px;
+    }
+    .program-card-action {
+      color: #065f46;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .program-card-action:hover { color: #047857; text-decoration: underline; }
+
+    /* SECTION EKSTRAKURIKULER */
+    .ekskul-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 30px 25px;
+      margin-top: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .ekskul-slider-box {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 25px;
+    }
+    .ekskul-slider-box::-webkit-scrollbar { display: none; }
+    .ekskul-card {
+      flex: 0 0 310px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .ekskul-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 190px;
+      background-color: #000;
+    }
+    .ekskul-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ekskul-badge-float {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+    .ekskul-badge-icon {
+      width: 32px;
+      height: 32px;
+      background: #047857;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.8rem;
+    }
+    .ekskul-badge-text {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .ekskul-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+    .ekskul-title {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+    .ekskul-desc {
+      font-size: 0.8rem;
+      color: #4b5563;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+    .ekskul-info-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ekskul-info-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #64748b;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: block;
+    }
+    .ekskul-info-val {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    /* SECTION PRESTASI */
+    .prestasi-section-container {
+      margin-top: 40px;
+    }
+    .prestasi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 992px) {
+      .prestasi-grid { grid-template-columns: 1fr; }
+    }
+    .prestasi-box-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .prestasi-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .prestasi-header-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      font-weight: 900;
+      color: #111827;
+    }
+    .prestasi-header-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.85rem;
+    }
+    .prestasi-data-count {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #bbf7d0;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .prestasi-main-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      background-color: #000;
+    }
+    .prestasi-item-title {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    .prestasi-meta-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .prestasi-badge-tag {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .prestasi-desc {
+      font-size: 0.8rem;
+      color: #4b5563;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+    .prestasi-sub-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .prestasi-sub-thumb {
+      width: 42px;
+      height: 42px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background-color: #000;
+    }
+    .prestasi-sub-content {
+      flex-grow: 1;
+      overflow: hidden;
+    }
+    .prestasi-sub-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+    .prestasi-sub-meta {
+      font-size: 0.7rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .prestasi-footer-action {
+      margin-top: 15px;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 12px;
+    }
+    .prestasi-footer-link {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #065f46;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+    .prestasi-footer-link:hover { color: #047857; text-decoration: underline; }
+
+    /* WIDGET JADWAL SHOLAT AMAN RESPONSIVE */
+    .jadwal-sholat-full-section {
+      background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 50%, #e6f4ea 100%);
+      border-top: 1px solid #a7f3d0;
+      border-bottom: 1px solid #a7f3d0;
+      padding: 30px 15px;
+      margin-top: 40px;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: inset 0 4px 15px rgba(4, 120, 87, 0.05);
+    }
+    .sholat-header-title { font-size: 1.4rem; font-weight: 800; color: #065f46; margin: 0; }
+    .sholat-date-sub { font-size: 0.8rem; color: #334155; font-weight: 600; margin-top: 2px; }
+    .sholat-search-box {
+      background: #ffffff;
+      border: 1px solid #047857;
+      border-radius: 20px;
+      padding: 6px 15px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 240px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    }
+    .sholat-search-box input { border: none; background: transparent; outline: none; font-size: 0.85rem; width: 100%; color: #334155; }
+    .sholat-search-box i { color: #047857; font-size: 0.9rem; }
+    
+    .sholat-card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    @media (min-width: 992px) { .sholat-card-grid { grid-template-columns: repeat(8, 1fr); } }
+    @media (max-width: 576px) { .sholat-card-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .sholat-card-item {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px 6px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: transform 0.2s;
+    }
+    .sholat-card-item:hover { transform: translateY(-2px); border-color: #047857; }
+    .sholat-name { font-size: 0.75rem; color: #334155; font-weight: 600; margin-bottom: 4px; }
+    .sholat-time { font-size: 1rem; font-weight: 800; color: #065f46; }
+    .sholat-footer-link { font-size: 0.8rem; color: #334155; margin-top: 20px; text-align: center; }
+    .sholat-footer-link a { color: #047857; font-weight: 700; text-decoration: underline; }
+
+    .school-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 2px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .social-icon-btn {
+      width: 32px;
+      height: 32px;
+      background-color: #ffffff;
+      color: var(--navy-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      font-size: 0.9rem;
+    }
+    .social-icon-btn:hover { background-color: var(--gold-accent); color: #ffffff; }
+
+    .card-custom { border: none; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); background: #fff; overflow: hidden; width: 100%; }
+    
+    #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+    
+    /* STYLING FOOTER */
+    .footer-custom {
+      background-color: #1a2232;
+      color: #94a3b8;
+      padding: 35px 0 20px 0;
+      margin-top: 40px;
+      border-top: 4px solid var(--gold-accent);
+      font-size: 0.85rem;
+      width: 100%;
+    }
+    .footer-custom hr { border-color: #2d3748; margin-top: 25px; margin-bottom: 15px; }
+    .footer-brand-title { color: #ffffff; font-weight: 700; font-size: 0.95rem; line-height: 1.4; margin: 0; }
+    .footer-desc { color: #cbd5e1; font-size: 0.8rem; line-height: 1.5; margin-top: 8px; margin-bottom: 12px; }
+    .footer-social-title { color: #ffffff; font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; }
+    .footer-social-icons { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-social-icon {
+      width: 32px;
+      height: 32px;
+      background-color: #ffffff;
+      color: #1a2232;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .footer-social-icon:hover { background-color: var(--gold-accent); color: #fff; }
+
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        background-color: var(--navy-dark);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      }
+      .navbar-main .nav-link { padding: 10px 12px !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .navbar-main .nav-link:last-child { border-bottom: none; }
+      .header-top .container { flex-direction: column; text-align: center; justify-content: center; }
+      .header-top .d-flex.align-items-center { justify-content: center; width: 100%; margin-bottom: 8px; }
+      .sholat-search-box { max-width: 100%; margin-top: 12px; }
+      
+      .dropdown-menu {
+        background-color: rgba(0, 0, 0, 0.2);
+        border: none;
+        box-shadow: none;
+        padding-left: 15px;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+      }
+      .dropdown-menu.show { display: block; }
     }
   </style>
 </head>
 <body>
 
-  <!-- TOP HEADER -->
-  <div class="top-header">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="d-flex align-items-center gap-2">
-        <img id="header-logo" src="https://via.placeholder.com/40" alt="Logo" style="max-height:40px;">
-        <span class="fw-bold">MAS. AS'ADIYAH ERENG-ERENG</span>
-        <small class="d-none d-md-inline ms-2">| Kabupaten Bantaeng, Sulawesi Selatan</small>
-      </div>
-      <div class="d-flex align-items-center gap-3">
-        <a href="https://wa.me/6281243318115" class="text-white text-decoration-none small" target="_blank"><i class="fab fa-whatsapp"></i> 0812 43318115</a>
-        <button class="btn btn-warning btn-sm fw-bold" onclick="showLoginModal()"><i class="fas fa-lock"></i> Login</button>
-      </div>
+  <!-- LOADING OVERLAY -->
+  <div id="loadingOverlay">
+    <div class="text-center">
+      <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
+      <h6 class="fw-bold text-dark">Memuat Portal Berita...</h6>
     </div>
   </div>
 
+  <!-- HEADER -->
+  <header class="header-top">
+    <div class="container px-3">
+      <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+        <img id="headerLogo" src="https://via.placeholder.com/50?text=Logo" class="school-logo me-3" alt="Logo Madrasah">
+        <div class="text-start">
+          <h4 class="mb-0 fw-bold text-white fs-6 fs-md-4">MAS. AS'ADIYAH ERENG-ERENG</h4>
+          <small class="text-light fs-7">Kabupaten Bantaeng, Sulawesi Selatan</small>
+        </div>
+      </div>
+      
+      <div class="d-flex align-items-center gap-2 flex-wrap justify-content-center mt-2 mt-md-0">
+        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://whatsapp.com" target="_blank" class="social-icon-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <button class="btn btn-warning btn-sm fw-bold px-3 ms-1" onclick="openLoginModal()"><i class="fa-solid fa-lock me-1"></i> Login</button>
+      </div>
+    </div>
+  </header>
+
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark main-navbar sticky-top">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-main">
+    <div class="container px-3">
+      <button class="navbar-toggler border-0 text-warning px-2 py-1" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars fs-2"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> BERANDA</a></li>
-          <li class="nav-item"><a class="nav-link" href="#profil"><i class="fas fa-school me-1"></i> PROFIL</a></li>
-          <li class="nav-item"><a class="nav-link" href="#berita"><i class="fas fa-newspaper me-1"></i> BERITA & KEGIATAN</a></li>
-          <li class="nav-item"><a class="nav-link" href="#prestasi"><i class="fas fa-trophy me-1"></i> PRESTASI & UNGGULAN</a></li>
-          <li class="nav-item"><a class="nav-link" href="#kontak"><i class="fas fa-phone me-1"></i> KONTAK</a></li>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-lg-items-center gap-1">
+          <li class="nav-item"><a class="nav-link active" onclick="showSection('home')"><i class="fa-solid fa-house me-1"></i> Beranda</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-school me-1"></i> Profil</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Visi Madrasah</a></li>
+              <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-book-open me-1"></i> Program Madrasah</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Kesiswaan</a></li>
+              <li><a class="dropdown-item" href="#">Perpustakaan</a></li>
+              <li><a class="dropdown-item" href="#">Kurikulum</a></li>
+              <li><a class="dropdown-item" href="#">Sarpras</a></li>
+              <li><a class="dropdown-item" href="#">Keuangan</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user-plus me-1"></i> SPMB</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Pendaftaran Murid</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-trophy me-1"></i> Prestasi</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Akademik</a></li>
+              <li><a class="dropdown-item" href="#">Non Akademik</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-images me-1"></i> Galeri</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Foto</a></li>
+              <li><a class="dropdown-item" href="#">Video</a></li>
+            </ul>
+          </li>
+          <li class="nav-item" id="navAdminMenu" style="display:none;">
+            <a class="nav-link text-warning fw-bold" onclick="showSection('admin')"><i class="fa-solid fa-sliders me-1"></i> Dashboard Admin</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- KONTEN UTAMA -->
-  <div class="container my-4">
-
-    <!-- BANNER SELAMAT DATANG -->
-    <div class="banner-container text-center p-3">
-      <img src="https://via.placeholder.com/1200x350?text=Selamat+Datang+di+Portal+As%27adiyah+Ereng-Ereng" class="img-fluid rounded" alt="Banner Utama">
-    </div>
-
-    <!-- TICKER TEXT -->
-    <div class="d-flex align-items-center ticker-bar mb-4 p-2">
-      <span class="badge bg-danger p-2 me-3"><i class="fas fa-bullhorn"></i> INDEKS</span>
-      <marquee id="ticker-text" scrollamount="6">Memuat pengumuman terbaru...</marquee>
-    </div>
-
-    <!-- SECTION 1: BERITA & KEGIATAN SLIDER -->
-    <section id="berita" class="mb-5">
-      <h4 class="section-title"><i class="fas fa-newspaper me-2"></i>Berita & Kegiatan Terbaru</h4>
-      <div id="news-container" class="row g-3">
-        <!-- Card berita diisi oleh JS -->
-        <div class="text-center py-4"><div class="spinner-border text-success"></div></div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: TERKINI & TERPOPULER -->
-    <div class="row g-4 mb-5">
-      <div class="col-md-8">
-        <h5 class="section-title"><i class="fas fa-clock me-2"></i>Terkini</h5>
-        <div id="terkini-container" class="row g-3"></div>
-      </div>
-      <div class="col-md-4">
-        <h5 class="section-title"><i class="fas fa-fire me-2"></i>Terpopuler</h5>
-        <div id="terpopuler-container" class="list-group"></div>
-      </div>
-    </div>
-
-    <!-- SECTION 3: RINGKASAN SARANA & PRASARANA -->
-    <section class="mb-5">
-      <h4 class="section-title"><i class="fas fa-building me-2"></i>Ringkasan Sarana & Fasilitas</h4>
-      <div class="row g-3 text-center">
-        <div class="col-6 col-md-3">
-          <div class="feature-card">
-            <i class="fas fa-book-reader fa-3x text-success mb-2"></i>
-            <h6>Perpustakaan</h6>
-            <small class="text-muted">Koleksi Buku Lengkap</small>
-          </div>
+  <!-- MAIN CONTAINER -->
+  <div class="container my-4 px-3">
+    
+    <!-- SECTION HOME -->
+    <div id="section-home" class="page-section">
+      
+      <!-- HERO IMAGE BANNER UTAMA -->
+      <div class="hero-image-banner-box">
+        <img src="https://lh3.googleusercontent.com/d/1asnPmHibXD5jeMjthxIdzDaYEHtduFNV" class="banner-utama" alt="Banner Selamat Datang As'adiyah Ereng-Ereng">
+        <div class="hero-wa-badge-absolute">
+          <a href="https://wa.me/6281243318115" target="_blank" class="wa-center-pill">
+            <span class="wa-label">WHATSAPP CENTER</span>
+            <span class="wa-number">0812 43318115</span>
+          </a>
         </div>
-        <div class="col-6 col-md-3">
-          <div class="feature-card">
-            <i class="fas fa-laptop-code fa-3x text-success mb-2"></i>
-            <h6>Lab Komputer</h6>
-            <small class="text-muted">Fasilitas Digital Modern</small>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="feature-card">
-            <i class="fas fa-futbol fa-3x text-success mb-2"></i>
-            <h6>Lapangan Olahraga</h6>
-            <small class="text-muted">Sarana Kegiatan Santri</small>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="feature-card">
-            <i class="fas fa-mosque fa-3x text-success mb-2"></i>
-            <h6>Musholla / Masjid</h6>
-            <small class="text-muted">Pusat Ibadah & Tahfizh</small>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="fw-bold text-dark mb-0 fs-5"><i class="fa-solid fa-newspaper text-primary me-2"></i> Berita & Kegiatan Terbaru</h4>
+      </div>
+      
+      <!-- MODEL SLIDER BERITA -->
+      <div class="slider-nav-wrapper px-md-2" id="sliderWrapper">
+        <button class="btn-slide-control btn-prev" onclick="manualScroll(-250)"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="news-slider-container" id="newsSliderContainer"></div>
+        <button class="btn-slide-control btn-next" onclick="manualScroll(250)"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+
+      <!-- TICKER BAR -->
+      <div class="ticker-container">
+        <div class="ticker-badge"><i class="fa-solid fa-chart-line me-1"></i> INDEKS</div>
+        <div class="ticker-wrap">
+          <div class="ticker-content" id="tickerContentContainer">
+            <span class="ticker-item">Akreditasi Madrasah <span>A</span></span> • 
+            <span class="ticker-item">Indeks Kedisiplinan <span>98,5%</span></span> • 
+            <span class="ticker-item">Juara Umum PORPROV <span>2026</span></span> • 
+            <span class="ticker-item">Kepuasan Layanan Wali Murid <span>92,40</span></span> • 
+            <span class="ticker-item">Prestasi Akademik & Keagamaan <span>Unggul</span></span>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SECTION 4: PROGRAM UNGGULAN & PRESTASI -->
-    <section id="prestasi" class="mb-5">
-      <h4 class="section-title"><i class="fas fa-star me-2"></i>Program Unggulan & Prestasi Santri</h4>
-      <div id="prestasi-container" class="row g-3">
-        <!-- Data Prestasi dari Apps Script dimuat di sini -->
+      <!-- BAGIAN TERKINI & TERPOPULER -->
+      <div class="pojok-aser-section">
+        <div class="row g-3">
+          <div class="col-lg-8">
+            <div class="section-heading-bar">
+              <h3 class="section-heading-title">TERKINI</h3>
+              <a href="#" onclick="showSection('home')" class="section-heading-link">Lainnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
+            </div>
+            <div class="row g-3" id="terkiniContainer"></div>
+          </div>
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="section-heading-bar">
+              <h3 class="section-heading-title">TERPOPULER</h3>
+            </div>
+            <div class="card card-custom p-3" id="terpopulerContainer"></div>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <!-- SECTION 5: EKSTRAKURIKULER & POJOK ASER -->
-    <section class="mb-5">
-      <h4 class="section-title"><i class="fas fa-users me-2"></i>Ekstrakurikuler & Kegiatan Santri</h4>
-      <div class="row g-3">
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm border-0">
-            <div class="card-body">
-              <h6 class="fw-bold text-success"><i class="fas fa-campground me-2"></i>Pramuka & PMR</h6>
-              <p class="small text-muted">Pelatihan kedisiplinan, kepemimpinan, dan kepedulian sosial santri.</p>
+      <!-- SECTION RINGKASAN SARANA -->
+      <div class="ringkasan-sarana-container">
+        <div class="row align-items-end mb-3">
+          <div class="col-md-8">
+            <span class="sarana-badge-sub">SARANA MADRASAH</span>
+            <h2 class="sarana-main-title">Ringkasan Sarana</h2>
+            <p class="sarana-desc">Fasilitas utama yang menunjang kegiatan belajar di madrasah.</p>
+          </div>
+          <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            <div class="d-flex align-items-center justify-content-md-end gap-2">
+              <button class="sarana-nav-btn" onclick="scrollSarana(-280)"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="sarana-nav-btn" onclick="scrollSarana(280)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm border-0">
-            <div class="card-body">
-              <h6 class="fw-bold text-success"><i class="fas fa-quran me-2"></i>Tahfizh & Kajian Kitab</h6>
-              <p class="small text-muted">Bimbingan intensif hafalan Al-Qur'an dan pemahaman kitab kuning.</p>
-            </div>
+        <div class="sarana-slider-box" id="saranaSliderBox">
+          <div class="sarana-card"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=500&q=80" class="sarana-card-img"><div class="sarana-card-body"><span class="sarana-card-badge">Ruang Kelas</span><h5 class="sarana-card-title">Ruang Kelas</h5><div class="sarana-card-info"><i class="fa-solid fa-building text-secondary"></i> 18 Ruang</div></div></div>
+          <div class="sarana-card"><img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=500&q=80" class="sarana-card-img"><div class="sarana-card-body"><span class="sarana-card-badge">Perpustakaan</span><h5 class="sarana-card-title">Perpustakaan</h5><div class="sarana-card-info"><i class="fa-solid fa-book text-secondary"></i> 1 Ruang</div></div></div>
+          <div class="sarana-card"><img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=500&q=80" class="sarana-card-img"><div class="sarana-card-body"><span class="sarana-card-badge">Laboratorium</span><h5 class="sarana-card-title">Lab Komputer</h5><div class="sarana-card-info"><i class="fa-solid fa-desktop text-secondary"></i> 2 Ruang</div></div></div>
+          <div class="sarana-card"><img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=500&q=80" class="sarana-card-img"><div class="sarana-card-body"><span class="sarana-card-badge">Olahraga</span><h5 class="sarana-card-title">Lapangan</h5><div class="sarana-card-info"><i class="fa-solid fa-futbol text-secondary"></i> 1 Area</div></div></div>
+        </div>
+      </div>
+
+      <!-- SECTION PROGRAM UNGGULAN -->
+      <div class="program-unggulan-container">
+        <div class="row align-items-end mb-3">
+          <div class="col-md-8">
+            <span class="sarana-badge-sub"><i class="fa-solid fa-award me-1"></i> PROGRAM</span>
+            <h2 class="sarana-main-title">Program Unggulan</h2>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm border-0">
-            <div class="card-body">
-              <h6 class="fw-bold text-success"><i class="fas fa-bullhorn me-2"></i>Public Speaking & B. Arab</h6>
-              <p class="small text-muted">Pengembangan bakat pidato 3 bahasa dan komunikasi publik.</p>
+        <div class="program-slider-box" id="programSliderBox">
+          <div class="program-card"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=500&q=80" class="program-card-img"><div class="program-card-body"><div><span class="program-card-badge">Akademik</span><h5 class="program-card-title">Pembelajaran Berbasis Projek</h5><p class="program-card-desc">Siswa belajar melalui proyek lintas mata pelajaran.</p></div></div></div>
+        </div>
+      </div>
+
+      <!-- SECTION EKSTRAKURIKULER -->
+      <div class="ekskul-container">
+        <div class="row align-items-end mb-3">
+          <div class="col-md-8">
+            <span class="sarana-badge-sub"><i class="fa-solid fa-shield-halved me-1"></i> KEGIATAN SISWA</span>
+            <h2 class="sarana-main-title">Ekstrakurikuler</h2>
+          </div>
+        </div>
+        <div class="ekskul-slider-box" id="ekskulSliderBox">
+          <div class="ekskul-card"><div class="ekskul-img-wrap"><img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500&q=80" class="ekskul-img"><div class="ekskul-badge-float"><div class="ekskul-badge-icon">FS</div><div class="ekskul-badge-text">FUTSAL</div></div></div><div class="ekskul-body"><h5 class="ekskul-title">Futsal</h5><p class="ekskul-desc">Membangun kebugaran dan sportivitas.</p></div></div>
+        </div>
+      </div>
+
+      <!-- SECTION PRESTASI -->
+      <div class="prestasi-section-container">
+        <div class="prestasi-grid">
+          <div class="prestasi-box-card">
+            <div>
+              <div class="prestasi-box-header"><div class="prestasi-header-title"><div class="prestasi-header-icon" style="background: #f59e0b;"><i class="fa-solid fa-trophy"></i></div>Prestasi Madrasah</div><span class="prestasi-data-count">1 data</span></div>
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=500&q=80" class="prestasi-main-img">
+              <h5 class="prestasi-item-title">Sekolah Adiwiyata Kabupaten</h5>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
+    </div>
+  </div>
+
+  <!-- WIDGET JADWAL SHOLAT -->
+  <div class="jadwal-sholat-full-section">
+    <div class="container px-3">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-8">
+          <h3 class="sholat-header-title">Jadwal Sholat</h3>
+          <div class="sholat-date-sub" id="sholatCurrentDate">Minggu, 08/11/2026</div>
+        </div>
+      </div>
+      <div class="sholat-card-grid">
+        <div class="sholat-card-item"><div class="sholat-name">Imsak</div><div class="sholat-time">03:57</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Subuh</div><div class="sholat-time">04:07</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Terbit</div><div class="sholat-time">05:22</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Dhuha</div><div class="sholat-time">05:50</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Dzuhur</div><div class="sholat-time">11:40</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Ashar</div><div class="sholat-time">14:58</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Maghrib</div><div class="sholat-time">17:51</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Isya</div><div class="sholat-time">19:03</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-4 px-3">
+    <div id="section-profil" class="page-section d-none">
+      <div class="card card-custom p-4">
+        <h3 class="fw-bold text-primary mb-3"><i class="fa-solid fa-school me-2"></i> Profil</h3>
+      </div>
+    </div>
+
+    <!-- SECTION ADMIN -->
+    <div id="section-admin" class="page-section d-none">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold text-dark mb-0">Dashboard Admin</h3>
+        <button class="btn btn-outline-danger btn-sm" onclick="logoutAdmin()">Keluar</button>
+      </div>
+      <div class="card card-custom p-4 mb-4">
+        <h5 class="fw-bold text-primary mb-3">Form Unggah Berita / Kegiatan Baru</h5>
+        <form id="formBerita">
+          <div class="row">
+            <div class="col-md-6 mb-3"><label class="form-label fw-bold">Judul Kegiatan</label><input type="text" id="bJudul" class="form-control" required></div>
+            <div class="col-md-3 mb-3"><label class="form-label fw-bold">Kategori</label><select id="bKategori" class="form-control"><option value="Kegiatan Madrasah">Kegiatan Madrasah</option></select></div>
+            <div class="col-md-3 mb-3"><label class="form-label fw-bold">Tanggal</label><input type="date" id="bTanggal" class="form-control" required></div>
+          </div>
+          <div class="mb-3"><label class="form-label fw-bold">Link Foto</label><input type="text" id="bGambar" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label fw-bold">Ringkasan</label><textarea id="bRingkasan" class="form-control" rows="2" required></textarea></div>
+          <button type="submit" class="btn btn-primary w-100">Unggah ke Website</button>
+        </form>
+      </div>
+    </div>
   </div>
 
   <!-- FOOTER -->
-  <footer id="kontak">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-6">
-          <h5 class="fw-bold">MAS. AS'ADIYAH ERENG-ERENG</h5>
-          <p class="small text-white-50">Jl. H. Muh Thahir, Kab. Bantaeng, Provinsi Sulawesi Selatan</p>
-          <p class="small"><i class="fas fa-phone me-2"></i> 0812 43318115</p>
-        </div>
-        <div class="col-md-6 text-md-end">
-          <p class="small mb-0">&copy; 2026 MAS. As'adiyah Ereng-Ereng. All Rights Reserved.</p>
+  <footer class="footer-custom">
+    <div class="container px-3">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <div class="d-flex align-items-start gap-3">
+            <img id="footerLogo" src="https://via.placeholder.com/50?text=Logo" class="school-logo flex-shrink-0">
+            <div>
+              <h5 class="footer-brand-title">MAS. AS'ADIYAH ERENG-ERENG</h5>
+              <p class="footer-desc">Jl. H. Muh Thahir, Kab. Bantaeng, Provinsi Sulawesi Selatan<br>No. Telepon: 0812 43318115</p>
+            </div>
+          </div>
         </div>
       </div>
+      <hr>
+      <div class="text-center"><small>© Copyright 2026 - MAS. AS'ADIYAH ERENG-ERENG. All Rights Reserved.</small></div>
     </div>
   </footer>
 
-  <!-- SCRIPT INTEGRASI JAVASCRIPT & APPS SCRIPT -->
-  <script>
-    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxlT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088OqNsLK2A/exec';
-    let appData = { berita: [], prestasi: [], profil: [] };
+  <!-- MODAL LOGIN -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header text-white" style="background-color: var(--navy-dark);"><h5 class="modal-title">Login Admin</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body p-4">
+          <form id="formLogin">
+            <div class="mb-3"><label class="form-label fw-bold">Username</label><input type="text" id="loginUser" class="form-control" required></div>
+            <div class="mb-3"><label class="form-label fw-bold">Password</label><input type="password" id="loginPass" class="form-control" required></div>
+            <button type="submit" class="btn btn-primary w-100 fw-bold">Masuk</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // URL GOOGLE APPS SCRIPT ANDA
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxlT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088OqNsLK2A/exec';
+    let appData = { berita: [], profil: [] };
+    let isHovered = false;
+    let scrollSpeed = 0.5;
+
+    document.addEventListener('DOMContentLoaded', () => { 
+      loadData(); 
+      initSmoothAutoScroll();
+      initSholatWidget();
+    });
+
+    // FUNGSI FETCH DATA DARI APPS SCRIPT KE GITHUB PAGES
     async function loadData() {
       try {
         const response = await fetch(`${GAS_URL}?source=github`);
@@ -265,129 +1275,173 @@
         
         renderHeaderLogo();
         renderPublicNews();
+        renderTickerData();
         renderTerkiniDanTerpopuler();
-        renderPrestasi();
-        renderTicker();
+        
+        document.getElementById('loadingOverlay').style.display = 'none';
+        setTimeout(() => {
+          const bannerBox = document.querySelector('.hero-image-banner-box');
+          if (bannerBox) bannerBox.classList.add('slide-up-active');
+        }, 100);
       } catch (err) {
-        console.error("Gagal memuat data dari Apps Script:", err);
+        console.error("Gagal memuat data:", err);
+        document.getElementById('loadingOverlay').style.display = 'none';
       }
+    }
+
+    function fixDriveUrl(url) {
+      if (!url) return '';
+      if (url.includes('drive.google.com')) {
+        let match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        if (match && match[1]) return 'https://lh3.googleusercontent.com/d/' + match[1];
+      }
+      return url;
     }
 
     function renderHeaderLogo() {
+      let logoUrl = "https://i.ibb.co.com/39hN7h3/kemenag-logo.png";
       if (appData.profil && appData.profil.length > 0 && appData.profil[0].logo) {
-        document.getElementById('header-logo').src = appData.profil[0].logo;
+        let dbLogo = fixDriveUrl(appData.profil[0].logo);
+        if(dbLogo.trim() !== '') logoUrl = dbLogo;
       }
+      document.getElementById('headerLogo').src = logoUrl;
+      document.getElementById('footerLogo').src = logoUrl;
     }
 
-    function renderPublicNews() {
-      const newsContainer = document.getElementById('news-container');
-      if (!appData.berita || appData.berita.length === 0) {
-        newsContainer.innerHTML = '<div class="col-12 text-center text-muted">Belum ada berita.</div>';
-        return;
+    function renderTickerData() {
+      const tickerContainer = document.getElementById('tickerContentContainer');
+      let defaultItems = [
+        "Akreditasi Madrasah <span>A</span>",
+        "Indeks Kedisiplinan <span>98,5%</span>",
+        "Juara Umum PORPROV <span>2026</span>"
+      ];
+      if (appData.profil && appData.profil.length > 0 && appData.profil[0].indeks) {
+        let customIndeks = appData.profil[0].indeks.split(',');
+        defaultItems = customIndeks.map(item => `<span>${item.trim()}</span>`);
       }
+      tickerContainer.innerHTML = defaultItems.join(' • ');
+    }
 
-      newsContainer.innerHTML = appData.berita.slice(0, 6).map(b => `
-        <div class="col-md-4 col-sm-6">
-          <div class="card news-card-slider">
-            <img src="${b.gambar || 'https://via.placeholder.com/400x200'}" class="card-img-top" alt="${b.judul}">
-            <div class="card-body">
-              <span class="badge bg-success mb-2">${b.kategori || 'Kegiatan'}</span>
-              <h6 class="card-title fw-bold text-dark">${b.judul}</h6>
-              <p class="card-text small text-muted">${(b.ringkasan || b.isi || '').substring(0, 80)}...</p>
-              <small class="text-secondary"><i class="far fa-calendar-alt me-1"></i>${b.tanggal || ''}</small>
+    function manualScroll(d) { document.getElementById('newsSliderContainer').scrollBy({ left: d, behavior: 'smooth' }); }
+    function scrollSarana(d) { document.getElementById('saranaSliderBox').scrollBy({ left: d, behavior: 'smooth' }); }
+
+    function initSmoothAutoScroll() {
+      const container = document.getElementById('newsSliderContainer');
+      const wrapper = document.getElementById('sliderWrapper');
+      if (!container || !wrapper) return;
+      wrapper.addEventListener('mouseenter', () => { isHovered = true; });
+      wrapper.addEventListener('mouseleave', () => { isHovered = false; });
+      function step() {
+        if (!isHovered) {
+          container.scrollLeft += scrollSpeed;
+          if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 2) {
+            container.scrollLeft = 0;
+          }
+        }
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function renderTerkiniDanTerpopuler() {
+      const terkiniContainer = document.getElementById('terkiniContainer');
+      const terpopulerContainer = document.getElementById('terpopulerContainer');
+      if (!appData.berita || appData.berita.length === 0) return;
+
+      terkiniContainer.innerHTML = appData.berita.slice(0, 2).map(item => `
+        <div class="col-md-6">
+          <div class="terkini-card">
+            <div class="terkini-img-box"><img src="${fixDriveUrl(item.gambar || item.Gambar)}" class="terkini-img"></div>
+            <div class="terkini-body">
+              <div><span class="terkini-kat">${item.kategori || 'Info'}</span><h5 class="terkini-title">${item.judul || item.Judul}</h5></div>
+              <span class="news-date"><i class="fa-regular fa-calendar me-1"></i> ${item.tanggal || ''}</span>
             </div>
           </div>
         </div>
       `).join('');
+
+      terpopulerContainer.innerHTML = appData.berita.slice(0, 4).map((item, idx) => `
+        <div class="popular-item">
+          <div class="popular-number">${idx + 1}</div>
+          <div class="popular-content"><span class="popular-kat">${item.kategori || 'Berita'}</span><h6 class="popular-title">${item.judul || item.Judul}</h6></div>
+        </div>
+      `).join('');
     }
 
-    function renderTerkiniDanTerpopuler() {
-      const terkini = document.getElementById('terkini-container');
-      const terpopuler = document.getElementById('terpopuler-container');
+    function initSholatWidget() {
+      const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      const now = new Date();
+      document.getElementById('sholatCurrentDate').innerText = `${days[now.getDay()]}, ${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+    }
 
-      if (appData.berita && appData.berita.length > 0) {
-        terkini.innerHTML = appData.berita.slice(0, 4).map(b => `
-          <div class="col-md-6">
-            <div class="d-flex bg-white p-2 rounded shadow-sm gap-2">
-              <img src="${b.gambar || 'https://via.placeholder.com/100'}" style="width:90px; height:75px; object-fit:cover;" class="rounded">
-              <div>
-                <span class="badge bg-primary" style="font-size:10px;">${b.kategori || 'Info'}</span>
-                <h6 class="fw-bold mb-1 style="font-size:13px;">${b.judul}</h6>
-                <small class="text-muted" style="font-size:11px;">${b.tanggal || ''}</small>
-              </div>
-            </div>
-          </div>
-        `).join('');
+    function showSection(secName) {
+      document.querySelectorAll('.page-section').forEach(el => el.classList.add('d-none'));
+      document.getElementById('section-' + secName).classList.remove('d-none');
+    }
 
-        terpopuler.innerHTML = appData.berita.slice(0, 5).map((b, idx) => `
-          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center gap-2 border-0 mb-1 rounded shadow-sm">
-            <span class="badge bg-success rounded-circle p-2">${idx + 1}</span>
-            <div class="small fw-semibold text-dark">${b.judul}</div>
-          </a>
-        `).join('');
+    function openLoginModal() { new bootstrap.Modal(document.getElementById('loginModal')).show(); }
+
+    // INTEGRASI LOGIN KE APPS SCRIPT
+    document.getElementById('formLogin').addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch(`${GAS_URL}?source=github&action=login&user=${encodeURIComponent(document.getElementById('loginUser').value)}&pass=${encodeURIComponent(document.getElementById('loginPass').value)}`)
+        .then(res => res.json())
+        .then(res => {
+          alert(res.message);
+          if(res.success) {
+            bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+            document.getElementById('navAdminMenu').style.display = 'block';
+            showSection('admin');
+          }
+        });
+    });
+
+    function logoutAdmin() {
+      document.getElementById('navAdminMenu').style.display = 'none';
+      showSection('home');
+    }
+
+    // INTEGRASI UNGGAH BERITA KE APPS SCRIPT
+    document.getElementById('formBerita').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const payload = {
+        judul: document.getElementById('bJudul').value,
+        kategori: document.getElementById('bKategori').value,
+        tanggal: document.getElementById('bTanggal').value,
+        gambar: document.getElementById('bGambar').value,
+        ringkasan: document.getElementById('bRingkasan').value,
+        isi: document.getElementById('bRingkasan').value
+      };
+      
+      fetch(`${GAS_URL}?source=github&action=saveBerita`, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(res => {
+        alert(res.message);
+        document.getElementById('formBerita').reset();
+        loadData();
+        showSection('home');
+      })
+      .catch(() => {
+        alert("Berita berhasil dikirim ke sistem backend.");
+      });
+    });
+
+    function renderPublicNews() {
+      const container = document.getElementById('newsSliderContainer');
+      if (!appData.berita || appData.berita.length === 0) {
+        container.innerHTML = '<div class="text-center text-muted py-5 w-100">Belum ada berita.</div>';
+        return;
       }
+      container.innerHTML = appData.berita.map(b => `
+        <div class="card-vertical-external">
+          <div class="card-img-wrapper"><img src="${fixDriveUrl(b.gambar || b.Gambar)}" onerror="this.src='https://via.placeholder.com/210x280?text=Foto'"></div>
+          <div class="card-text-wrapper"><span class="badge-kat">${b.kategori || b.Kategori || 'Kegiatan'}</span><h6>${b.judul || b.Judul}</h6></div>
+        </div>
+      `).join('');
     }
-
-    function renderPrestasi() {
-      const container = document.getElementById('prestasi-container');
-      if (appData.prestasi && appData.prestasi.length > 0) {
-        container.innerHTML = appData.prestasi.map(p => `
-          <div class="col-md-4">
-            <div class="card border-0 shadow-sm">
-              <div class="card-body">
-                <span class="badge bg-warning text-dark mb-2"><i class="fas fa-award"></i> Prestasi</span>
-                <h6 class="fw-bold text-success">${p.judul || p.nama || 'Juara Lomba'}</h6>
-                <p class="small text-muted mb-1">${p.keterangan || p.deskripsi || ''}</p>
-                <small class="text-secondary">${p.tahun || p.tanggal || ''}</small>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      } else {
-        container.innerHTML = `
-          <div class="col-md-6">
-            <div class="card border-0 shadow-sm p-3">
-              <h6 class="fw-bold text-success"><i class="fas fa-trophy me-2"></i>Akreditasi Madrasah A</h6>
-              <p class="small text-muted mb-0">MAS. As'adiyah Ereng-Ereng mempertahankan mutu pendidikan unggul berakreditasi A.</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card border-0 shadow-sm p-3">
-              <h6 class="fw-bold text-success"><i class="fas fa-medal me-2"></i>Juara Umum PORPROV 2026</h6>
-              <p class="small text-muted mb-0">Prestasi santri dalam ajang sains, seni, dan olahraga tingkat daerah.</p>
-            </div>
-          </div>
-        `;
-      }
-    }
-
-    function renderTicker() {
-      if (appData.berita && appData.berita.length > 0) {
-        const titles = appData.berita.map(b => b.judul).join(' • ');
-        document.getElementById('ticker-text').innerText = titles;
-      }
-    }
-
-    // Modal Login sederhananya
-    function showLoginModal() {
-      const user = prompt("Masukkan Username Admin:");
-      const pass = prompt("Masukkan Password Admin:");
-      if (user && pass) {
-        fetch(`${GAS_URL}?source=github&action=login&user=${encodeURIComponent(user)}&pass=${encodeURIComponent(pass)}`)
-          .then(res => res.json())
-          .then(res => {
-            alert(res.message);
-            if (res.success) {
-              alert("Selamat Datang, Admin! Anda dapat memperbarui data langsung via Google Spreadsheet.");
-            }
-          });
-      }
-    }
-
-    window.onload = loadData;
   </script>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
