@@ -29,7 +29,6 @@
     .header-top { background-color: var(--navy-dark); color: #fff; padding: 12px 0; border-bottom: 3px solid var(--gold-accent); }
     .header-top .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; width: 100%; }
     
-    /* NAVBAR & DROPDOWN HOVER STYLING */
     .navbar-main { background-color: var(--navy-main); box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1020; width: 100%; }
     .navbar-main .nav-link { color: #fff !important; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; padding: 10px 16px !important; cursor: pointer; transition: all 0.3s ease; border-radius: 4px; }
     
@@ -79,7 +78,6 @@
       box-shadow: inset 3px 0 0 var(--gold-accent);
     }
     
-    /* EFEK MELAYANG (SLIDE UP & FADE IN) DIPICU JS SAAT HALAMAN SELESAI DIMUAT */
     .hero-image-banner-box {
       position: relative;
       width: 100%;
@@ -88,14 +86,11 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       margin-bottom: 25px;
       background-color: #0f172a;
-      
-      /* Posisi awal tersembunyi di bawah */
       opacity: 0;
       transform: translateY(50px);
       transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Kelas aktif saat dipicu JavaScript */
     .hero-image-banner-box.slide-up-active {
       opacity: 1;
       transform: translateY(0);
@@ -109,7 +104,6 @@
       object-fit: cover;
     }
     
-    /* TOMBOL WHATSAPP CENTER MELAYANG DI SUDUT KANAN BAWAH BANNER */
     .hero-wa-badge-absolute {
       position: absolute;
       bottom: 15px;
@@ -144,16 +138,7 @@
       padding: 6px 14px;
     }
 
-    @media (max-width: 576px) {
-      .hero-wa-badge-absolute {
-        bottom: 10px;
-        right: 10px;
-      }
-      .wa-label { font-size: 0.6rem; padding: 4px 8px; }
-      .wa-number { font-size: 0.7rem; padding: 4px 10px; }
-    }
-
-    /* NEWS SLIDER VERTICAL */
+    /* NEWS SLIDER VERTICAL / HORIZONTAL */
     .news-slider-container {
       display: flex;
       gap: 16px;
@@ -210,7 +195,6 @@
       overflow: hidden;
     }
 
-    /* SLIDER NAV CONTROLS */
     .slider-nav-wrapper { position: relative; width: 100%; }
     .btn-slide-control {
       position: absolute;
@@ -232,7 +216,6 @@
     .btn-prev { left: -8px; }
     .btn-next { right: -8px; }
 
-    /* TICKER BAR */
     .ticker-container {
       background-color: #fff;
       border-radius: 8px;
@@ -264,7 +247,6 @@
       100% { transform: translate3d(-100%, 0, 0); }
     }
 
-    /* BAGIAN BAWAH INDEKS: TERKINI & TERPOPULER */
     .pojok-aser-section {
       background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f8fafc 100%);
       border: 1px solid #bbf7d0;
@@ -316,27 +298,10 @@
       align-items: center;
       justify-content: center;
     }
-    .terkini-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .terkini-img { width: 100%; height: 100%; object-fit: cover; }
     .terkini-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .terkini-kat {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: #047857;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      display: block;
-    }
-    .terkini-title {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #1e293b;
-      line-height: 1.35;
-      margin-bottom: 8px;
-    }
+    .terkini-kat { font-size: 0.65rem; font-weight: 700; color: #047857; text-transform: uppercase; margin-bottom: 6px; display: block; }
+    .terkini-title { font-size: 0.95rem; font-weight: 800; color: #1e293b; line-height: 1.35; margin-bottom: 8px; }
     .news-date { font-size: 0.75rem; color: #64748b; }
 
     .popular-item {
@@ -348,30 +313,12 @@
       border-bottom: 1px solid #e2e8f0;
     }
     .popular-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .popular-number {
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: #047857;
-      line-height: 1;
-      min-width: 30px;
-      text-align: center;
-    }
+    .popular-number { font-size: 1.8rem; font-weight: 900; color: #047857; line-height: 1; min-width: 30px; text-align: center; }
     .popular-content { display: flex; flex-direction: column; }
     .popular-kat { font-size: 0.6rem; font-weight: 700; color: #047857; text-transform: uppercase; margin-bottom: 2px; }
-    .popular-title {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #1e293b;
-      line-height: 1.3;
-      margin-bottom: 4px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+    .popular-title { font-size: 0.8rem; font-weight: 700; color: #1e293b; line-height: 1.3; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-    /* SECTION RINGKASAN SARANA */
-    .ringkasan-sarana-container {
+    .ringkasan-sarana-container, .program-unggulan-container, .ekskul-container {
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 16px;
@@ -379,57 +326,12 @@
       margin-top: 40px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
-    .sarana-badge-sub {
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: #047857;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      display: block;
-    }
-    .sarana-main-title {
-      font-size: 1.7rem;
-      font-weight: 900;
-      color: #111827;
-      margin-bottom: 6px;
-    }
-    .sarana-desc {
-      font-size: 0.85rem;
-      color: #4b5563;
-      margin-bottom: 0;
-    }
-    .sarana-btn-detail {
-      background-color: #065f46;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 8px 18px;
-      border-radius: 20px;
-      border: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .sarana-btn-detail:hover { background-color: #047857; color: #fff; }
-    .sarana-nav-btn {
-      width: 36px;
-      height: 36px;
-      border: 1px solid #cbd5e1;
-      background: #ffffff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #334155;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .sarana-nav-btn:hover { background: #f1f5f9; border-color: #94a3b8; }
+    .sarana-badge-sub { font-size: 0.7rem; font-weight: 800; color: #047857; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; display: block; }
+    .sarana-main-title { font-size: 1.7rem; font-weight: 900; color: #111827; margin-bottom: 6px; }
+    .sarana-desc { font-size: 0.85rem; color: #4b5563; margin-bottom: 0; }
+    .sarana-nav-btn { width: 36px; height: 36px; border: 1px solid #cbd5e1; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #334155; cursor: pointer; }
     
-    .sarana-slider-box {
+    .sarana-slider-box, .program-slider-box, .ekskul-slider-box {
       display: flex;
       gap: 16px;
       overflow-x: auto;
@@ -439,519 +341,32 @@
       -webkit-overflow-scrolling: touch;
       margin-top: 25px;
     }
-    .sarana-slider-box::-webkit-scrollbar { display: none; }
-    .sarana-card {
-      flex: 0 0 260px;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      display: flex;
-      flex-direction: column;
-    }
-    .sarana-card-img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-      background-color: #000;
-    }
+    .sarana-slider-box::-webkit-scrollbar, .program-slider-box::-webkit-scrollbar, .ekskul-slider-box::-webkit-scrollbar { display: none; }
+    
+    .sarana-card { flex: 0 0 260px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
+    .sarana-card-img { width: 100%; height: 170px; object-fit: cover; background-color: #000; }
     .sarana-card-body { padding: 14px; }
-    .sarana-card-badge {
-      display: inline-block;
-      background-color: #ecfdf5;
-      color: #047857;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-bottom: 6px;
-      border: 1px solid #bbf7d0;
-    }
-    .sarana-card-title {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #1e293b;
-      margin-bottom: 8px;
-    }
-    .sarana-card-info {
-      font-size: 0.75rem;
-      color: #64748b;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .sarana-card-badge { display: inline-block; background-color: #ecfdf5; color: #047857; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; border: 1px solid #bbf7d0; }
+    .sarana-card-title { font-size: 0.95rem; font-weight: 800; color: #1e293b; margin-bottom: 8px; }
+    .sarana-card-info { font-size: 0.75rem; color: #64748b; display: flex; align-items: center; gap: 6px; }
 
-    /* SECTION PROGRAM UNGGULAN */
-    .program-unggulan-container {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 30px 25px;
-      margin-top: 40px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-    }
-    .program-slider-box {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      padding-bottom: 10px;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      margin-top: 25px;
-    }
-    .program-slider-box::-webkit-scrollbar { display: none; }
-    .program-card {
-      flex: 0 0 310px;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      display: flex;
-      flex-direction: column;
-    }
-    .program-card-img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      background-color: #000;
-    }
-    .program-card-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-    }
-    .program-card-badge {
-      display: inline-block;
-      background-color: #065f46;
-      color: #ffffff;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-    }
-    .program-card-title {
-      font-size: 1rem;
-      font-weight: 900;
-      color: #111827;
-      margin-bottom: 8px;
-    }
-    .program-card-desc {
-      font-size: 0.8rem;
-      color: #4b5563;
-      line-height: 1.4;
-      margin-bottom: 15px;
-    }
-    .program-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #334155;
-      border-top: 1px solid #f1f5f9;
-      padding-top: 12px;
-    }
-    .program-card-action {
-      color: #065f46;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .program-card-action:hover { color: #047857; text-decoration: underline; }
-
-    /* SECTION EKSTRAKURIKULER */
-    .ekskul-container {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 30px 25px;
-      margin-top: 40px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-    }
-    .ekskul-slider-box {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      padding-bottom: 10px;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      margin-top: 25px;
-    }
-    .ekskul-slider-box::-webkit-scrollbar { display: none; }
-    .ekskul-card {
-      flex: 0 0 310px;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      display: flex;
-      flex-direction: column;
-    }
-    .ekskul-img-wrap {
-      position: relative;
-      width: 100%;
-      height: 190px;
-      background-color: #000;
-    }
-    .ekskul-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .ekskul-badge-float {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 10px;
-      padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #fff;
-    }
-    .ekskul-badge-icon {
-      width: 32px;
-      height: 32px;
-      background: #047857;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.8rem;
-    }
-    .ekskul-badge-text {
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .ekskul-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-    }
-    .ekskul-title {
-      font-size: 1rem;
-      font-weight: 900;
-      color: #111827;
-      margin-bottom: 6px;
-    }
-    .ekskul-desc {
-      font-size: 0.8rem;
-      color: #4b5563;
-      line-height: 1.4;
-      margin-bottom: 15px;
-    }
-    .ekskul-info-box {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .ekskul-info-label {
-      font-size: 0.65rem;
-      font-weight: 800;
-      color: #64748b;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      display: block;
-    }
-    .ekskul-info-val {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #1e293b;
-    }
-
-    /* SECTION PRESTASI */
-    .prestasi-section-container {
-      margin-top: 40px;
-    }
-    .prestasi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    @media (max-width: 992px) {
-      .prestasi-grid { grid-template-columns: 1fr; }
-    }
-    .prestasi-box-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .prestasi-box-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-    .prestasi-header-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1rem;
-      font-weight: 900;
-      color: #111827;
-    }
-    .prestasi-header-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 0.85rem;
-    }
-    .prestasi-data-count {
-      background: #ecfdf5;
-      color: #047857;
-      border: 1px solid #bbf7d0;
-      font-size: 0.7rem;
-      font-weight: 800;
-      padding: 3px 10px;
-      border-radius: 20px;
-    }
-    .prestasi-main-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      background-color: #000;
-    }
-    .prestasi-item-title {
-      font-size: 1.05rem;
-      font-weight: 900;
-      color: #1e293b;
-      margin-bottom: 8px;
-    }
-    .prestasi-meta-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-    .prestasi-badge-tag {
-      font-size: 0.65rem;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-    .prestasi-desc {
-      font-size: 0.8rem;
-      color: #4b5563;
-      line-height: 1.4;
-      margin-bottom: 15px;
-    }
-    .prestasi-sub-item {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .prestasi-sub-thumb {
-      width: 42px;
-      height: 42px;
-      border-radius: 6px;
-      object-fit: cover;
-      flex-shrink: 0;
-      background-color: #000;
-    }
-    .prestasi-sub-content {
-      flex-grow: 1;
-      overflow: hidden;
-    }
-    .prestasi-sub-title {
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: #1e293b;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 2px;
-    }
-    .prestasi-sub-meta {
-      font-size: 0.7rem;
-      color: #64748b;
-      font-weight: 600;
-    }
-    .prestasi-footer-action {
-      margin-top: 15px;
-      border-top: 1px solid #f1f5f9;
-      padding-top: 12px;
-    }
-    .prestasi-footer-link {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: #065f46;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: 0.2s;
-    }
-    .prestasi-footer-link:hover { color: #047857; text-decoration: underline; }
-
-    /* WIDGET JADWAL SHOLAT AMAN RESPONSIVE */
-    .jadwal-sholat-full-section {
-      background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 50%, #e6f4ea 100%);
-      border-top: 1px solid #a7f3d0;
-      border-bottom: 1px solid #a7f3d0;
-      padding: 30px 15px;
-      margin-top: 40px;
-      width: 100%;
-      box-sizing: border-box;
-      box-shadow: inset 0 4px 15px rgba(4, 120, 87, 0.05);
-    }
-    .sholat-header-title { font-size: 1.4rem; font-weight: 800; color: #065f46; margin: 0; }
-    .sholat-date-sub { font-size: 0.8rem; color: #334155; font-weight: 600; margin-top: 2px; }
-    .sholat-search-box {
-      background: #ffffff;
-      border: 1px solid #047857;
-      border-radius: 20px;
-      padding: 6px 15px;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      max-width: 240px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-    }
-    .sholat-search-box input { border: none; background: transparent; outline: none; font-size: 0.85rem; width: 100%; color: #334155; }
-    .sholat-search-box i { color: #047857; font-size: 0.9rem; }
-    
-    .sholat-card-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 15px;
-    }
-    @media (min-width: 992px) { .sholat-card-grid { grid-template-columns: repeat(8, 1fr); } }
-    @media (max-width: 576px) { .sholat-card-grid { grid-template-columns: repeat(2, 1fr); } }
-
-    .sholat-card-item {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      padding: 12px 6px;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-      transition: transform 0.2s;
-    }
-    .sholat-card-item:hover { transform: translateY(-2px); border-color: #047857; }
-    .sholat-name { font-size: 0.75rem; color: #334155; font-weight: 600; margin-bottom: 4px; }
-    .sholat-time { font-size: 1rem; font-weight: 800; color: #065f46; }
-    .sholat-footer-link { font-size: 0.8rem; color: #334155; margin-top: 20px; text-align: center; }
-    .sholat-footer-link a { color: #047857; font-weight: 700; text-decoration: underline; }
-
-    .school-logo {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      background: white;
-      border-radius: 50%;
-      padding: 2px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .social-icon-btn {
-      width: 32px;
-      height: 32px;
-      background-color: #ffffff;
-      color: var(--navy-dark);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      text-decoration: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      font-size: 0.9rem;
-    }
+    .school-logo { width: 40px; height: 40px; object-fit: contain; background: white; border-radius: 50%; padding: 2px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+    .social-icon-btn { width: 32px; height: 32px; background-color: #ffffff; color: var(--navy-dark); display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 0.9rem; }
     .social-icon-btn:hover { background-color: var(--gold-accent); color: #ffffff; }
 
     .card-custom { border: none; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); background: #fff; overflow: hidden; width: 100%; }
-    
     #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); display: flex; justify-content: center; align-items: center; z-index: 9999; }
     
-    /* STYLING FOOTER */
-    .footer-custom {
-      background-color: #1a2232;
-      color: #94a3b8;
-      padding: 35px 0 20px 0;
-      margin-top: 40px;
-      border-top: 4px solid var(--gold-accent);
-      font-size: 0.85rem;
-      width: 100%;
-    }
+    .footer-custom { background-color: #1a2232; color: #94a3b8; padding: 35px 0 20px 0; margin-top: 40px; border-top: 4px solid var(--gold-accent); font-size: 0.85rem; width: 100%; }
     .footer-custom hr { border-color: #2d3748; margin-top: 25px; margin-bottom: 15px; }
     .footer-brand-title { color: #ffffff; font-weight: 700; font-size: 0.95rem; line-height: 1.4; margin: 0; }
     .footer-desc { color: #cbd5e1; font-size: 0.8rem; line-height: 1.5; margin-top: 8px; margin-bottom: 12px; }
-    .footer-social-title { color: #ffffff; font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; }
-    .footer-social-icons { display: flex; gap: 8px; flex-wrap: wrap; }
-    .footer-social-icon {
-      width: 32px;
-      height: 32px;
-      background-color: #ffffff;
-      color: #1a2232;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 0.85rem;
-    }
-    .footer-social-icon:hover { background-color: var(--gold-accent); color: #fff; }
 
     @media (max-width: 991.98px) {
-      .navbar-collapse {
-        background-color: var(--navy-dark);
-        padding: 15px;
-        border-radius: 8px;
-        margin-top: 10px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-      }
+      .navbar-collapse { background-color: var(--navy-dark); padding: 15px; border-radius: 8px; margin-top: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
       .navbar-main .nav-link { padding: 10px 12px !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
-      .navbar-main .nav-link:last-child { border-bottom: none; }
       .header-top .container { flex-direction: column; text-align: center; justify-content: center; }
-      .header-top .d-flex.align-items-center { justify-content: center; width: 100%; margin-bottom: 8px; }
-      .sholat-search-box { max-width: 100%; margin-top: 12px; }
-      
-      .dropdown-menu {
-        background-color: rgba(0, 0, 0, 0.2);
-        border: none;
-        box-shadow: none;
-        padding-left: 15px;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        display: none;
-      }
+      .dropdown-menu { background-color: rgba(0, 0, 0, 0.2); border: none; box-shadow: none; padding-left: 15px; opacity: 1; visibility: visible; display: none; }
       .dropdown-menu.show { display: block; }
     }
   </style>
@@ -1043,13 +458,11 @@
 
   <!-- MAIN CONTAINER -->
   <div class="container my-4 px-3">
-    
-    <!-- SECTION HOME -->
     <div id="section-home" class="page-section">
       
-      <!-- HERO IMAGE BANNER UTAMA -->
+      <!-- HERO BANNER -->
       <div class="hero-image-banner-box">
-        <img src="https://lh3.googleusercontent.com/d/1asnPmHibXD5jeMjthxIdzDaYEHtduFNV" class="banner-utama" alt="Banner Selamat Datang As'adiyah Ereng-Ereng">
+        <img src="https://lh3.googleusercontent.com/d/1asnPmHibXD5jeMjthxIdzDaYEHtduFNV" class="banner-utama" alt="Banner Selamat Datang">
         <div class="hero-wa-badge-absolute">
           <a href="https://wa.me/6281243318115" target="_blank" class="wa-center-pill">
             <span class="wa-label">WHATSAPP CENTER</span>
@@ -1062,34 +475,31 @@
         <h4 class="fw-bold text-dark mb-0 fs-5"><i class="fa-solid fa-newspaper text-primary me-2"></i> Berita & Kegiatan Terbaru</h4>
       </div>
       
-      <!-- MODEL SLIDER BERITA -->
+      <!-- SLIDER BERITA -->
       <div class="slider-nav-wrapper px-md-2" id="sliderWrapper">
         <button class="btn-slide-control btn-prev" onclick="manualScroll(-250)"><i class="fa-solid fa-chevron-left"></i></button>
         <div class="news-slider-container" id="newsSliderContainer"></div>
         <button class="btn-slide-control btn-next" onclick="manualScroll(250)"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
 
-      <!-- TICKER BAR -->
+      <!-- TICKER -->
       <div class="ticker-container">
         <div class="ticker-badge"><i class="fa-solid fa-chart-line me-1"></i> INDEKS</div>
         <div class="ticker-wrap">
           <div class="ticker-content" id="tickerContentContainer">
             <span class="ticker-item">Akreditasi Madrasah <span>A</span></span> • 
             <span class="ticker-item">Indeks Kedisiplinan <span>98,5%</span></span> • 
-            <span class="ticker-item">Juara Umum PORPROV <span>2026</span></span> • 
-            <span class="ticker-item">Kepuasan Layanan Wali Murid <span>92,40</span></span> • 
-            <span class="ticker-item">Prestasi Akademik & Keagamaan <span>Unggul</span></span>
+            <span class="ticker-item">Juara Umum PORPROV <span>2026</span></span>
           </div>
         </div>
       </div>
 
-      <!-- BAGIAN TERKINI & TERPOPULER -->
+      <!-- TERKINI & TERPOPULER -->
       <div class="pojok-aser-section">
         <div class="row g-3">
           <div class="col-lg-8">
             <div class="section-heading-bar">
               <h3 class="section-heading-title">TERKINI</h3>
-              <a href="#" onclick="showSection('home')" class="section-heading-link">Lainnya <i class="fa-solid fa-arrow-right ms-1"></i></a>
             </div>
             <div class="row g-3" id="terkiniContainer"></div>
           </div>
@@ -1102,101 +512,11 @@
         </div>
       </div>
 
-      <!-- SECTION RINGKASAN SARANA -->
-      <div class="ringkasan-sarana-container">
-        <div class="row align-items-end mb-3">
-          <div class="col-md-8">
-            <span class="sarana-badge-sub">SARANA MADRASAH</span>
-            <h2 class="sarana-main-title">Ringkasan Sarana</h2>
-            <p class="sarana-desc">Fasilitas utama yang menunjang kegiatan belajar di madrasah.</p>
-          </div>
-          <div class="col-md-4 text-md-end mt-3 mt-md-0">
-            <div class="d-flex align-items-center justify-content-md-end gap-2">
-              <button class="sarana-nav-btn" onclick="scrollSarana(-280)"><i class="fa-solid fa-chevron-left"></i></button>
-              <button class="sarana-nav-btn" onclick="scrollSarana(280)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="sarana-slider-box" id="saranaSliderBox">
-          <div class="sarana-card"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=500&q=80" class="sarana-card-img"><div class="sarana-card-body"><span class="sarana-card-badge">Ruang Kelas</span><h5 class="sarana-card-title">Ruang Kelas</h5><div class="sarana-card-info"><i class="fa-solid fa-building text-secondary"></i> 18 Ruang</div></div></div>
-          <div class="sarana-card"><img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=500&q=80" class="sarana-card-img"><div class="sarana-card-body"><span class="sarana-card-badge">Perpustakaan</span><h5 class="sarana-card-title">Perpustakaan</h5><div class="sarana-card-info"><i class="fa-solid fa-book text-secondary"></i> 1 Ruang</div></div></div>
-          <div class="sarana-card"><img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=500&q=80" class="sarana-card-img"><div class="sarana-card-body"><span class="sarana-card-badge">Laboratorium</span><h5 class="sarana-card-title">Lab Komputer</h5><div class="sarana-card-info"><i class="fa-solid fa-desktop text-secondary"></i> 2 Ruang</div></div></div>
-          <div class="sarana-card"><img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=500&q=80" class="sarana-card-img"><div class="sarana-card-body"><span class="sarana-card-badge">Olahraga</span><h5 class="sarana-card-title">Lapangan</h5><div class="sarana-card-info"><i class="fa-solid fa-futbol text-secondary"></i> 1 Area</div></div></div>
-        </div>
-      </div>
-
-      <!-- SECTION PROGRAM UNGGULAN -->
-      <div class="program-unggulan-container">
-        <div class="row align-items-end mb-3">
-          <div class="col-md-8">
-            <span class="sarana-badge-sub"><i class="fa-solid fa-award me-1"></i> PROGRAM</span>
-            <h2 class="sarana-main-title">Program Unggulan</h2>
-          </div>
-        </div>
-        <div class="program-slider-box" id="programSliderBox">
-          <div class="program-card"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=500&q=80" class="program-card-img"><div class="program-card-body"><div><span class="program-card-badge">Akademik</span><h5 class="program-card-title">Pembelajaran Berbasis Projek</h5><p class="program-card-desc">Siswa belajar melalui proyek lintas mata pelajaran.</p></div></div></div>
-        </div>
-      </div>
-
-      <!-- SECTION EKSTRAKURIKULER -->
-      <div class="ekskul-container">
-        <div class="row align-items-end mb-3">
-          <div class="col-md-8">
-            <span class="sarana-badge-sub"><i class="fa-solid fa-shield-halved me-1"></i> KEGIATAN SISWA</span>
-            <h2 class="sarana-main-title">Ekstrakurikuler</h2>
-          </div>
-        </div>
-        <div class="ekskul-slider-box" id="ekskulSliderBox">
-          <div class="ekskul-card"><div class="ekskul-img-wrap"><img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500&q=80" class="ekskul-img"><div class="ekskul-badge-float"><div class="ekskul-badge-icon">FS</div><div class="ekskul-badge-text">FUTSAL</div></div></div><div class="ekskul-body"><h5 class="ekskul-title">Futsal</h5><p class="ekskul-desc">Membangun kebugaran dan sportivitas.</p></div></div>
-        </div>
-      </div>
-
-      <!-- SECTION PRESTASI -->
-      <div class="prestasi-section-container">
-        <div class="prestasi-grid">
-          <div class="prestasi-box-card">
-            <div>
-              <div class="prestasi-box-header"><div class="prestasi-header-title"><div class="prestasi-header-icon" style="background: #f59e0b;"><i class="fa-solid fa-trophy"></i></div>Prestasi Madrasah</div><span class="prestasi-data-count">1 data</span></div>
-              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=500&q=80" class="prestasi-main-img">
-              <h5 class="prestasi-item-title">Sekolah Adiwiyata Kabupaten</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
-  <!-- WIDGET JADWAL SHOLAT -->
-  <div class="jadwal-sholat-full-section">
-    <div class="container px-3">
-      <div class="row align-items-center mb-3">
-        <div class="col-md-8">
-          <h3 class="sholat-header-title">Jadwal Sholat</h3>
-          <div class="sholat-date-sub" id="sholatCurrentDate">Minggu, 08/11/2026</div>
-        </div>
-      </div>
-      <div class="sholat-card-grid">
-        <div class="sholat-card-item"><div class="sholat-name">Imsak</div><div class="sholat-time">03:57</div></div>
-        <div class="sholat-card-item"><div class="sholat-name">Subuh</div><div class="sholat-time">04:07</div></div>
-        <div class="sholat-card-item"><div class="sholat-name">Terbit</div><div class="sholat-time">05:22</div></div>
-        <div class="sholat-card-item"><div class="sholat-name">Dhuha</div><div class="sholat-time">05:50</div></div>
-        <div class="sholat-card-item"><div class="sholat-name">Dzuhur</div><div class="sholat-time">11:40</div></div>
-        <div class="sholat-card-item"><div class="sholat-name">Ashar</div><div class="sholat-time">14:58</div></div>
-        <div class="sholat-card-item"><div class="sholat-name">Maghrib</div><div class="sholat-time">17:51</div></div>
-        <div class="sholat-card-item"><div class="sholat-name">Isya</div><div class="sholat-time">19:03</div></div>
-      </div>
-    </div>
-  </div>
-
+  <!-- DASHBOARD ADMIN SECTION -->
   <div class="container my-4 px-3">
-    <div id="section-profil" class="page-section d-none">
-      <div class="card card-custom p-4">
-        <h3 class="fw-bold text-primary mb-3"><i class="fa-solid fa-school me-2"></i> Profil</h3>
-      </div>
-    </div>
-
-    <!-- SECTION ADMIN -->
     <div id="section-admin" class="page-section d-none">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h3 class="fw-bold text-dark mb-0">Dashboard Admin</h3>
@@ -1255,7 +575,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // URL GOOGLE APPS SCRIPT ANDA
     const GAS_URL = 'https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxlT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088OqNsLK2A/exec';
     let appData = { berita: [], profil: [] };
     let isHovered = false;
@@ -1264,10 +583,8 @@
     document.addEventListener('DOMContentLoaded', () => { 
       loadData(); 
       initSmoothAutoScroll();
-      initSholatWidget();
     });
 
-    // FUNGSI FETCH DATA DARI APPS SCRIPT KE GITHUB PAGES
     async function loadData() {
       try {
         const response = await fetch(`${GAS_URL}?source=github`);
@@ -1275,7 +592,6 @@
         
         renderHeaderLogo();
         renderPublicNews();
-        renderTickerData();
         renderTerkiniDanTerpopuler();
         
         document.getElementById('loadingOverlay').style.display = 'none';
@@ -1308,39 +624,18 @@
       document.getElementById('footerLogo').src = logoUrl;
     }
 
-    function renderTickerData() {
-      const tickerContainer = document.getElementById('tickerContentContainer');
-      let defaultItems = [
-        "Akreditasi Madrasah <span>A</span>",
-        "Indeks Kedisiplinan <span>98,5%</span>",
-        "Juara Umum PORPROV <span>2026</span>"
-      ];
-      if (appData.profil && appData.profil.length > 0 && appData.profil[0].indeks) {
-        let customIndeks = appData.profil[0].indeks.split(',');
-        defaultItems = customIndeks.map(item => `<span>${item.trim()}</span>`);
-      }
-      tickerContainer.innerHTML = defaultItems.join(' • ');
-    }
-
-    function manualScroll(d) { document.getElementById('newsSliderContainer').scrollBy({ left: d, behavior: 'smooth' }); }
-    function scrollSarana(d) { document.getElementById('saranaSliderBox').scrollBy({ left: d, behavior: 'smooth' }); }
-
-    function initSmoothAutoScroll() {
+    function renderPublicNews() {
       const container = document.getElementById('newsSliderContainer');
-      const wrapper = document.getElementById('sliderWrapper');
-      if (!container || !wrapper) return;
-      wrapper.addEventListener('mouseenter', () => { isHovered = true; });
-      wrapper.addEventListener('mouseleave', () => { isHovered = false; });
-      function step() {
-        if (!isHovered) {
-          container.scrollLeft += scrollSpeed;
-          if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 2) {
-            container.scrollLeft = 0;
-          }
-        }
-        requestAnimationFrame(step);
+      if (!appData.berita || appData.berita.length === 0) {
+        container.innerHTML = '<div class="text-center text-muted py-5 w-100">Belum ada berita.</div>';
+        return;
       }
-      requestAnimationFrame(step);
+      container.innerHTML = appData.berita.map(b => `
+        <div class="card-vertical-external">
+          <div class="card-img-wrapper"><img src="${fixDriveUrl(b.gambar || b.Gambar)}" onerror="this.src='https://via.placeholder.com/210x280?text=Foto'"></div>
+          <div class="card-text-wrapper"><span class="badge-kat">${b.kategori || b.Kategori || 'Kegiatan'}</span><h6>${b.judul || b.Judul}</h6></div>
+        </div>
+      `).join('');
     }
 
     function renderTerkiniDanTerpopuler() {
@@ -1368,10 +663,22 @@
       `).join('');
     }
 
-    function initSholatWidget() {
-      const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-      const now = new Date();
-      document.getElementById('sholatCurrentDate').innerText = `${days[now.getDay()]}, ${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+    function initSmoothAutoScroll() {
+      const container = document.getElementById('newsSliderContainer');
+      const wrapper = document.getElementById('sliderWrapper');
+      if (!container || !wrapper) return;
+      wrapper.addEventListener('mouseenter', () => { isHovered = true; });
+      wrapper.addEventListener('mouseleave', () => { isHovered = false; });
+      function step() {
+        if (!isHovered) {
+          container.scrollLeft += scrollSpeed;
+          if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 2) {
+            container.scrollLeft = 0;
+          }
+        }
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
     }
 
     function showSection(secName) {
@@ -1381,7 +688,6 @@
 
     function openLoginModal() { new bootstrap.Modal(document.getElementById('loginModal')).show(); }
 
-    // INTEGRASI LOGIN KE APPS SCRIPT
     document.getElementById('formLogin').addEventListener('submit', function(e) {
       e.preventDefault();
       fetch(`${GAS_URL}?source=github&action=login&user=${encodeURIComponent(document.getElementById('loginUser').value)}&pass=${encodeURIComponent(document.getElementById('loginPass').value)}`)
@@ -1401,7 +707,6 @@
       showSection('home');
     }
 
-    // INTEGRASI UNGGAH BERITA KE APPS SCRIPT
     document.getElementById('formBerita').addEventListener('submit', function(e) {
       e.preventDefault();
       const payload = {
@@ -1429,19 +734,7 @@
       });
     });
 
-    function renderPublicNews() {
-      const container = document.getElementById('newsSliderContainer');
-      if (!appData.berita || appData.berita.length === 0) {
-        container.innerHTML = '<div class="text-center text-muted py-5 w-100">Belum ada berita.</div>';
-        return;
-      }
-      container.innerHTML = appData.berita.map(b => `
-        <div class="card-vertical-external">
-          <div class="card-img-wrapper"><img src="${fixDriveUrl(b.gambar || b.Gambar)}" onerror="this.src='https://via.placeholder.com/210x280?text=Foto'"></div>
-          <div class="card-text-wrapper"><span class="badge-kat">${b.kategori || b.Kategori || 'Kegiatan'}</span><h6>${b.judul || b.Judul}</h6></div>
-        </div>
-      `).join('');
-    }
+    function manualScroll(d) { document.getElementById('newsSliderContainer').scrollBy({ left: d, behavior: 'smooth' }); }
   </script>
 </body>
 </html>
