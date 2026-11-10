@@ -330,13 +330,63 @@
     </div>
   </header>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR LENGKAP -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-main">
     <div class="container px-3">
-      <div class="collapse navbar-collapse show" id="navContent">
+      <button class="navbar-toggler border-0 text-warning px-2 py-1" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars fs-2"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-lg-items-center gap-1">
           <li class="nav-item">
             <a class="nav-link active" onclick="showSection('home')"><i class="fa-solid fa-house me-1"></i> Beranda</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-school me-1"></i> Profil
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="visi-misi-2026-2027.pdf" target="_blank">Visi dan Misi Madrasah</a></li>
+              <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-book-open me-1"></i> Program Madrasah
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Kesiswaan</a></li>
+              <li><a class="dropdown-item" href="#">Perpustakaan</a></li>
+              <li><a class="dropdown-item" href="#">Kurikulum</a></li>
+              <li><a class="dropdown-item" href="#">Sarpras</a></li>
+              <li><a class="dropdown-item" href="#">Keuangan</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user-plus me-1"></i> SPMB
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Pendaftaran Murid</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-trophy me-1"></i> Prestasi
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Akademik</a></li>
+              <li><a class="dropdown-item" href="#">Non Akademik</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-images me-1"></i> Galeri
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Foto</a></li>
+              <li><a class="dropdown-item" href="#">Video</a></li>
+            </ul>
           </li>
           <li class="nav-item" id="navAdminMenu" style="display:none;">
             <a class="nav-link text-warning fw-bold" onclick="showSection('admin')"><i class="fa-solid fa-sliders me-1"></i> Dashboard Admin</a>
@@ -479,7 +529,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // URL Backend Google Apps Script
     const GAS_URL = "https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxIT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088QgNsLK2A/exec";
 
     let appData = { berita: [], profil: [] };
@@ -601,7 +650,6 @@
 
     function openLoginModal() { new bootstrap.Modal(document.getElementById('loginModal')).show(); }
 
-    // PROSES LOGIN ADMIN
     document.getElementById('formLogin').addEventListener('submit', function(e) {
       e.preventDefault();
       const u = document.getElementById('loginUser').value.trim();
@@ -624,10 +672,11 @@
 
     function logoutAdmin() {
       document.getElementById('navAdminMenu').style.display = 'none';
-      showSection('home');
+      showShopHome();
     }
 
-    // PROSES KIRIM BERITA BARU KE GAS
+    function showShopHome() { showSection('home'); }
+
     document.getElementById('formBerita').addEventListener('submit', function(e) {
       e.preventDefault();
       const payload = {
@@ -659,7 +708,6 @@
       .catch(err => alert("Terjadi kesalahan jaringan."));
     });
 
-    // PROSES KIRIM / UPDATE INDEKS KE GAS
     document.getElementById('formIndeks').addEventListener('submit', function(e) {
       e.preventDefault();
       const indeksVal = document.getElementById('indeksInput').value.trim();
@@ -672,7 +720,7 @@
 
       fetch(GAS_URL, {
         method: 'POST',
-        body: JSON.stringify(payload)
+        body: JSON.svg ? JSON.stringify(payload) : JSON.stringify(payload)
       })
       .then(res => res.json())
       .then(res => {
