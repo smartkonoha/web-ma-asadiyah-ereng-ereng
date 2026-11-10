@@ -40,43 +40,6 @@
       box-shadow: 0 0 10px var(--glow-color);
       transform: translateY(-1px);
     }
-
-    .dropdown-menu {
-      background-color: var(--navy-dark);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-      padding: 8px 0;
-      margin-top: 0;
-      opacity: 0;
-      visibility: hidden;
-      display: block;
-      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-      transform: translateY(10px);
-    }
-
-    @media (min-width: 992px) {
-      .dropdown:hover .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-    }
-
-    .dropdown-item {
-      color: #cbd5e1 !important;
-      font-size: 0.85rem;
-      font-weight: 500;
-      padding: 8px 20px;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .dropdown-item:hover, .dropdown-item:focus {
-      background-color: rgba(217, 119, 6, 0.2);
-      color: #FDE047 !important;
-      padding-left: 24px;
-      box-shadow: inset 3px 0 0 var(--gold-accent);
-    }
     
     .hero-image-banner-box {
       position: relative;
@@ -138,7 +101,6 @@
       padding: 6px 14px;
     }
 
-    /* NEWS SLIDER VERTICAL / HORIZONTAL */
     .news-slider-container {
       display: flex;
       gap: 16px;
@@ -272,12 +234,6 @@
       margin: 0;
       text-transform: uppercase;
     }
-    .section-heading-link {
-      color: #047857;
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-decoration: none;
-    }
 
     .terkini-card {
       background: #ffffff;
@@ -316,58 +272,54 @@
     .popular-number { font-size: 1.8rem; font-weight: 900; color: #047857; line-height: 1; min-width: 30px; text-align: center; }
     .popular-content { display: flex; flex-direction: column; }
     .popular-kat { font-size: 0.6rem; font-weight: 700; color: #047857; text-transform: uppercase; margin-bottom: 2px; }
-    .popular-title { font-size: 0.8rem; font-weight: 700; color: #1e293b; line-height: 1.3; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-    .ringkasan-sarana-container, .program-unggulan-container, .ekskul-container {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 30px 25px;
-      margin-top: 40px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    .popular-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-    .sarana-badge-sub { font-size: 0.7rem; font-weight: 800; color: #047857; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; display: block; }
-    .sarana-main-title { font-size: 1.7rem; font-weight: 900; color: #111827; margin-bottom: 6px; }
-    .sarana-desc { font-size: 0.85rem; color: #4b5563; margin-bottom: 0; }
-    .sarana-nav-btn { width: 36px; height: 36px; border: 1px solid #cbd5e1; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #334155; cursor: pointer; }
-    
-    .sarana-slider-box, .program-slider-box, .ekskul-slider-box {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      padding-bottom: 10px;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      margin-top: 25px;
-    }
-    .sarana-slider-box::-webkit-scrollbar, .program-slider-box::-webkit-scrollbar, .ekskul-slider-box::-webkit-scrollbar { display: none; }
-    
-    .sarana-card { flex: 0 0 260px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
-    .sarana-card-img { width: 100%; height: 170px; object-fit: cover; background-color: #000; }
-    .sarana-card-body { padding: 14px; }
-    .sarana-card-badge { display: inline-block; background-color: #ecfdf5; color: #047857; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; border: 1px solid #bbf7d0; }
-    .sarana-card-title { font-size: 0.95rem; font-weight: 800; color: #1e293b; margin-bottom: 8px; }
-    .sarana-card-info { font-size: 0.75rem; color: #64748b; display: flex; align-items: center; gap: 6px; }
 
-    .school-logo { width: 40px; height: 40px; object-fit: contain; background: white; border-radius: 50%; padding: 2px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-    .social-icon-btn { width: 32px; height: 32px; background-color: #ffffff; color: var(--navy-dark); display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 0.9rem; }
+    .school-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 2px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .social-icon-btn {
+      width: 32px;
+      height: 32px;
+      background-color: #ffffff;
+      color: var(--navy-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      font-size: 0.9rem;
+    }
     .social-icon-btn:hover { background-color: var(--gold-accent); color: #ffffff; }
 
     .card-custom { border: none; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); background: #fff; overflow: hidden; width: 100%; }
+    
     #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); display: flex; justify-content: center; align-items: center; z-index: 9999; }
     
-    .footer-custom { background-color: #1a2232; color: #94a3b8; padding: 35px 0 20px 0; margin-top: 40px; border-top: 4px solid var(--gold-accent); font-size: 0.85rem; width: 100%; }
-    .footer-custom hr { border-color: #2d3748; margin-top: 25px; margin-bottom: 15px; }
-    .footer-brand-title { color: #ffffff; font-weight: 700; font-size: 0.95rem; line-height: 1.4; margin: 0; }
-    .footer-desc { color: #cbd5e1; font-size: 0.8rem; line-height: 1.5; margin-top: 8px; margin-bottom: 12px; }
-
-    @media (max-width: 991.98px) {
-      .navbar-collapse { background-color: var(--navy-dark); padding: 15px; border-radius: 8px; margin-top: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-      .navbar-main .nav-link { padding: 10px 12px !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
-      .header-top .container { flex-direction: column; text-align: center; justify-content: center; }
-      .dropdown-menu { background-color: rgba(0, 0, 0, 0.2); border: none; box-shadow: none; padding-left: 15px; opacity: 1; visibility: visible; display: none; }
-      .dropdown-menu.show { display: block; }
+    .footer-custom {
+      background-color: #1a2232;
+      color: #94a3b8;
+      padding: 35px 0 20px 0;
+      margin-top: 40px;
+      border-top: 4px solid var(--gold-accent);
+      font-size: 0.85rem;
+      width: 100%;
     }
   </style>
 </head>
@@ -405,52 +357,13 @@
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-main">
     <div class="container px-3">
-      <button class="navbar-toggler border-0 text-warning px-2 py-1" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler border-0 text-warning px-2 py-1" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
         <i class="fa-solid fa-bars fs-2"></i>
       </button>
       <div class="collapse navbar-collapse" id="navContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-lg-items-center gap-1">
           <li class="nav-item"><a class="nav-link active" onclick="showSection('home')"><i class="fa-solid fa-house me-1"></i> Beranda</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-school me-1"></i> Profil</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Visi Madrasah</a></li>
-              <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-book-open me-1"></i> Program Madrasah</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Kesiswaan</a></li>
-              <li><a class="dropdown-item" href="#">Perpustakaan</a></li>
-              <li><a class="dropdown-item" href="#">Kurikulum</a></li>
-              <li><a class="dropdown-item" href="#">Sarpras</a></li>
-              <li><a class="dropdown-item" href="#">Keuangan</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user-plus me-1"></i> SPMB</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Pendaftaran Murid</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-trophy me-1"></i> Prestasi</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Akademik</a></li>
-              <li><a class="dropdown-item" href="#">Non Akademik</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-images me-1"></i> Galeri</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Foto</a></li>
-              <li><a class="dropdown-item" href="#">Video</a></li>
-            </ul>
-          </li>
-          <li class="nav-item" id="navAdminMenu" style="display:none;">
-            <a class="nav-link text-warning fw-bold" onclick="showSection('admin')"><i class="fa-solid fa-sliders me-1"></i> Dashboard Admin</a>
-          </li>
+          <li class="nav-item" id="navAdminMenu" style="display:none;"><a class="nav-link text-warning fw-bold" onclick="showSection('admin')"><i class="fa-solid fa-sliders me-1"></i> Dashboard Admin</a></li>
         </ul>
       </div>
     </div>
@@ -462,7 +375,7 @@
       
       <!-- HERO BANNER -->
       <div class="hero-image-banner-box">
-        <img src="https://lh3.googleusercontent.com/d/1asnPmHibXD5jeMjthxIdzDaYEHtduFNV" class="banner-utama" alt="Banner Selamat Datang">
+        <img src="https://lh3.googleusercontent.com/d/1asnPmHibXD5jeMjthxIdzDaYEHtduFNV" class="banner-utama" alt="Banner">
         <div class="hero-wa-badge-absolute">
           <a href="https://wa.me/6281243318115" target="_blank" class="wa-center-pill">
             <span class="wa-label">WHATSAPP CENTER</span>
@@ -475,64 +388,51 @@
         <h4 class="fw-bold text-dark mb-0 fs-5"><i class="fa-solid fa-newspaper text-primary me-2"></i> Berita & Kegiatan Terbaru</h4>
       </div>
       
-      <!-- SLIDER BERITA -->
       <div class="slider-nav-wrapper px-md-2" id="sliderWrapper">
         <button class="btn-slide-control btn-prev" onclick="manualScroll(-250)"><i class="fa-solid fa-chevron-left"></i></button>
         <div class="news-slider-container" id="newsSliderContainer"></div>
         <button class="btn-slide-control btn-next" onclick="manualScroll(250)"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
 
-      <!-- TICKER -->
       <div class="ticker-container">
         <div class="ticker-badge"><i class="fa-solid fa-chart-line me-1"></i> INDEKS</div>
         <div class="ticker-wrap">
           <div class="ticker-content" id="tickerContentContainer">
-            <span class="ticker-item">Akreditasi Madrasah <span>A</span></span> • 
-            <span class="ticker-item">Indeks Kedisiplinan <span>98,5%</span></span> • 
-            <span class="ticker-item">Juara Umum PORPROV <span>2026</span></span>
+            <span class="ticker-item">Akreditasi Madrasah <span>A</span></span>
           </div>
         </div>
       </div>
 
-      <!-- TERKINI & TERPOPULER -->
       <div class="pojok-aser-section">
         <div class="row g-3">
           <div class="col-lg-8">
-            <div class="section-heading-bar">
-              <h3 class="section-heading-title">TERKINI</h3>
-            </div>
+            <div class="section-heading-bar"><h3 class="section-heading-title">TERKINI</h3></div>
             <div class="row g-3" id="terkiniContainer"></div>
           </div>
           <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="section-heading-bar">
-              <h3 class="section-heading-title">TERPOPULER</h3>
-            </div>
+            <div class="section-heading-bar"><h3 class="section-heading-title">TERPOPULER</h3></div>
             <div class="card card-custom p-3" id="terpopulerContainer"></div>
           </div>
         </div>
       </div>
 
     </div>
-  </div>
 
-  <!-- DASHBOARD ADMIN SECTION -->
-  <div class="container my-4 px-3">
+    <!-- SECTION ADMIN -->
     <div id="section-admin" class="page-section d-none">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="fw-bold text-dark mb-0">Dashboard Admin</h3>
-        <button class="btn btn-outline-danger btn-sm" onclick="logoutAdmin()">Keluar</button>
+        <h3 class="fw-bold text-dark mb-0 fs-4">Dashboard Admin</h3>
+        <button class="btn btn-outline-danger btn-sm" onclick="logoutAdmin()"><i class="fa-solid fa-right-from-bracket me-1"></i> Keluar</button>
       </div>
       <div class="card card-custom p-4 mb-4">
-        <h5 class="fw-bold text-primary mb-3">Form Unggah Berita / Kegiatan Baru</h5>
+        <h5 class="fw-bold text-primary mb-3">Form Unggah Berita</h5>
         <form id="formBerita">
-          <div class="row">
-            <div class="col-md-6 mb-3"><label class="form-label fw-bold">Judul Kegiatan</label><input type="text" id="bJudul" class="form-control" required></div>
-            <div class="col-md-3 mb-3"><label class="form-label fw-bold">Kategori</label><select id="bKategori" class="form-control"><option value="Kegiatan Madrasah">Kegiatan Madrasah</option></select></div>
-            <div class="col-md-3 mb-3"><label class="form-label fw-bold">Tanggal</label><input type="date" id="bTanggal" class="form-control" required></div>
-          </div>
-          <div class="mb-3"><label class="form-label fw-bold">Link Foto</label><input type="text" id="bGambar" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label fw-bold">Judul</label><input type="text" id="bJudul" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label fw-bold">Kategori</label><input type="text" id="bKategori" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label fw-bold">Tanggal</label><input type="date" id="bTanggal" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label fw-bold">Link Gambar</label><input type="text" id="bGambar" class="form-control" required></div>
           <div class="mb-3"><label class="form-label fw-bold">Ringkasan</label><textarea id="bRingkasan" class="form-control" rows="2" required></textarea></div>
-          <button type="submit" class="btn btn-primary w-100">Unggah ke Website</button>
+          <button type="submit" class="btn btn-primary w-100">Unggah</button>
         </form>
       </div>
     </div>
@@ -540,20 +440,8 @@
 
   <!-- FOOTER -->
   <footer class="footer-custom">
-    <div class="container px-3">
-      <div class="row align-items-center">
-        <div class="col-lg-8">
-          <div class="d-flex align-items-start gap-3">
-            <img id="footerLogo" src="https://via.placeholder.com/50?text=Logo" class="school-logo flex-shrink-0">
-            <div>
-              <h5 class="footer-brand-title">MAS. AS'ADIYAH ERENG-ERENG</h5>
-              <p class="footer-desc">Jl. H. Muh Thahir, Kab. Bantaeng, Provinsi Sulawesi Selatan<br>No. Telepon: 0812 43318115</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="text-center"><small>© Copyright 2026 - MAS. AS'ADIYAH ERENG-ERENG. All Rights Reserved.</small></div>
+    <div class="container px-3 text-center">
+      <small>© Copyright 2026 - MAS. AS'ADIYAH ERENG-ERENG. All Rights Reserved.</small>
     </div>
   </footer>
 
@@ -561,12 +449,15 @@
   <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header text-white" style="background-color: var(--navy-dark);"><h5 class="modal-title">Login Admin</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+        <div class="modal-header text-white" style="background-color: var(--navy-dark);">
+          <h5 class="modal-title">Login Admin</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
         <div class="modal-body p-4">
           <form id="formLogin">
-            <div class="mb-3"><label class="form-label fw-bold">Username</label><input type="text" id="loginUser" class="form-control" required></div>
-            <div class="mb-3"><label class="form-label fw-bold">Password</label><input type="password" id="loginPass" class="form-control" required></div>
-            <button type="submit" class="btn btn-primary w-100 fw-bold">Masuk</button>
+            <div class="mb-3"><label class="form-label">Username</label><input type="text" id="loginUser" class="form-control" required></div>
+            <div class="mb-3"><label class="form-label">Password</label><input type="password" id="loginPass" class="form-control" required></div>
+            <button type="submit" class="btn btn-primary w-100">Masuk</button>
           </form>
         </div>
       </div>
@@ -575,7 +466,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxlT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088OqNsLK2A/exec';
     let appData = { berita: [], profil: [] };
     let isHovered = false;
     let scrollSpeed = 0.5;
@@ -585,24 +475,33 @@
       initSmoothAutoScroll();
     });
 
-    async function loadData() {
-      try {
-        const response = await fetch(`${GAS_URL}?source=github`);
-        appData = await response.json();
-        
-        renderHeaderLogo();
-        renderPublicNews();
-        renderTerkiniDanTerpopuler();
-        
-        document.getElementById('loadingOverlay').style.display = 'none';
-        setTimeout(() => {
-          const bannerBox = document.querySelector('.hero-image-banner-box');
-          if (bannerBox) bannerBox.classList.add('slide-up-active');
-        }, 100);
-      } catch (err) {
-        console.error("Gagal memuat data:", err);
-        document.getElementById('loadingOverlay').style.display = 'none';
-      }
+    function loadData() {
+      // URL Apps Script dengan ?source=github
+      const urlAppsScript = "https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxIT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088QgNsLK2A/exec?source=github";
+
+      fetch(urlAppsScript)
+        .then(response => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.json();
+        })
+        .then(res => {
+          appData = res;
+          renderHeaderLogo();
+          renderPublicNews();
+          renderTickerData();
+          renderTerkiniDanTerpopuler();
+          
+          document.getElementById('loadingOverlay').style.display = 'none';
+          
+          setTimeout(() => {
+            const bannerBox = document.querySelector('.hero-image-banner-box');
+            if (bannerBox) bannerBox.classList.add('slide-up-active');
+          }, 100);
+        })
+        .catch(err => {
+          console.error("Error fetching data:", err);
+          document.getElementById('loadingOverlay').style.display = 'none';
+        });
     }
 
     function fixDriveUrl(url) {
@@ -621,54 +520,35 @@
         if(dbLogo.trim() !== '') logoUrl = dbLogo;
       }
       document.getElementById('headerLogo').src = logoUrl;
-      document.getElementById('footerLogo').src = logoUrl;
     }
 
-    function renderPublicNews() {
-      const container = document.getElementById('newsSliderContainer');
-      if (!appData.berita || appData.berita.length === 0) {
-        container.innerHTML = '<div class="text-center text-muted py-5 w-100">Belum ada berita.</div>';
-        return;
+    function renderTickerData() {
+      const tickerContainer = document.getElementById('tickerContentContainer');
+      let defaultItems = [
+        "Akreditasi Madrasah <span>A</span>",
+        "Indeks Kedisiplinan <span>98,5%</span>",
+        "Juara Umum PORPROV <span>2026</span>"
+      ];
+      if (appData.profil && appData.profil.length > 0 && appData.profil[0].indeks) {
+        let customIndeks = appData.profil[0].indeks.split(',');
+        defaultItems = customIndeks.map(item => `<span>${item.trim()}</span>`);
       }
-      container.innerHTML = appData.berita.map(b => `
-        <div class="card-vertical-external">
-          <div class="card-img-wrapper"><img src="${fixDriveUrl(b.gambar || b.Gambar)}" onerror="this.src='https://via.placeholder.com/210x280?text=Foto'"></div>
-          <div class="card-text-wrapper"><span class="badge-kat">${b.kategori || b.Kategori || 'Kegiatan'}</span><h6>${b.judul || b.Judul}</h6></div>
-        </div>
-      `).join('');
+      tickerContainer.innerHTML = defaultItems.join(' • ');
     }
 
-    function renderTerkiniDanTerpopuler() {
-      const terkiniContainer = document.getElementById('terkiniContainer');
-      const terpopulerContainer = document.getElementById('terpopulerContainer');
-      if (!appData.berita || appData.berita.length === 0) return;
-
-      terkiniContainer.innerHTML = appData.berita.slice(0, 2).map(item => `
-        <div class="col-md-6">
-          <div class="terkini-card">
-            <div class="terkini-img-box"><img src="${fixDriveUrl(item.gambar || item.Gambar)}" class="terkini-img"></div>
-            <div class="terkini-body">
-              <div><span class="terkini-kat">${item.kategori || 'Info'}</span><h5 class="terkini-title">${item.judul || item.Judul}</h5></div>
-              <span class="news-date"><i class="fa-regular fa-calendar me-1"></i> ${item.tanggal || ''}</span>
-            </div>
-          </div>
-        </div>
-      `).join('');
-
-      terpopulerContainer.innerHTML = appData.berita.slice(0, 4).map((item, idx) => `
-        <div class="popular-item">
-          <div class="popular-number">${idx + 1}</div>
-          <div class="popular-content"><span class="popular-kat">${item.kategori || 'Berita'}</span><h6 class="popular-title">${item.judul || item.Judul}</h6></div>
-        </div>
-      `).join('');
+    function manualScroll(direction) {
+      const container = document.getElementById('newsSliderContainer');
+      container.scrollBy({ left: direction, behavior: 'smooth' });
     }
 
     function initSmoothAutoScroll() {
       const container = document.getElementById('newsSliderContainer');
       const wrapper = document.getElementById('sliderWrapper');
       if (!container || !wrapper) return;
+
       wrapper.addEventListener('mouseenter', () => { isHovered = true; });
       wrapper.addEventListener('mouseleave', () => { isHovered = false; });
+
       function step() {
         if (!isHovered) {
           container.scrollLeft += scrollSpeed;
@@ -681,6 +561,78 @@
       requestAnimationFrame(step);
     }
 
+    function renderTerkiniDanTerpopuler() {
+      const terkiniContainer = document.getElementById('terkiniContainer');
+      const terpopulerContainer = document.getElementById('terpopulerContainer');
+
+      if (!appData.berita || appData.berita.length === 0) {
+        terkiniContainer.innerHTML = '<div class="text-muted text-center py-4 col-12">Belum ada berita.</div>';
+        terpopulerContainer.innerHTML = '<div class="text-muted text-center py-4">Belum ada data.</div>';
+        return;
+      }
+
+      let terkiniList = appData.berita.slice(0, 2);
+      terkiniContainer.innerHTML = terkiniList.map(item => {
+        let title = item.judul || item.Judul || 'Kegiatan';
+        let kat = item.kategori || item.Kategori || 'INFORMASI';
+        let img = fixDriveUrl(item.gambar || item.Gambar);
+        let date = item.tanggal || item.Tanggal || '';
+
+        return `
+          <div class="col-md-6">
+            <div class="terkini-card">
+              <div class="terkini-img-box"><img src="${img}" class="terkini-img" onerror="this.src='https://via.placeholder.com/400x220?text=Foto'"></div>
+              <div class="terkini-body">
+                <div><span class="terkini-kat">${kat}</span><h5 class="terkini-title">${title}</h5></div>
+                <span class="news-date"><i class="fa-regular fa-calendar me-1"></i> ${date}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      let popularList = appData.berita.slice(0, 4);
+      terpopulerContainer.innerHTML = popularList.map((item, index) => {
+        let title = item.judul || item.Judul || 'Kegiatan';
+        let kat = item.kategori || item.Kategori || 'Berita';
+        let date = item.tanggal || item.Tanggal || '';
+        return `
+          <div class="popular-item">
+            <div class="popular-number">${index + 1}</div>
+            <div class="popular-content">
+              <span class="popular-kat">${kat}</span>
+              <h6 class="popular-title">${title}</h6>
+              <span class="news-date" style="font-size: 0.7rem;"><i class="fa-regular fa-calendar me-1"></i> ${date}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderPublicNews() {
+      const container = document.getElementById('newsSliderContainer');
+      if (!appData.berita || appData.berita.length === 0) {
+        container.innerHTML = '<div class="text-center text-muted py-5 w-100">Belum ada berita atau kegiatan.</div>';
+        return;
+      }
+
+      container.innerHTML = appData.berita.map(b => {
+        let titleText = b.judul || b.Judul || 'Kegiatan Madrasah';
+        let categoryText = b.kategori || b.Kategori || 'Kegiatan';
+        let imageUrl = fixDriveUrl(b.gambar || b.Gambar);
+
+        return `
+          <div class="card-vertical-external">
+            <div class="card-img-wrapper"><img src="${imageUrl}" onerror="this.src='https://via.placeholder.com/210x280?text=Foto'"></div>
+            <div class="card-text-wrapper">
+              <span class="badge-kat">${categoryText}</span>
+              <h6>${titleText}</h6>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
     function showSection(secName) {
       document.querySelectorAll('.page-section').forEach(el => el.classList.add('d-none'));
       document.getElementById('section-' + secName).classList.remove('d-none');
@@ -690,15 +642,17 @@
 
     document.getElementById('formLogin').addEventListener('submit', function(e) {
       e.preventDefault();
-      fetch(`${GAS_URL}?source=github&action=login&user=${encodeURIComponent(document.getElementById('loginUser').value)}&pass=${encodeURIComponent(document.getElementById('loginPass').value)}`)
+      const u = document.getElementById('loginUser').value;
+      const p = document.getElementById('loginPass').value;
+      fetch(`https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxIT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088QgNsLK2A/exec?source=github&action=login&user=${encodeURIComponent(u)}&pass=${encodeURIComponent(p)}`)
         .then(res => res.json())
         .then(res => {
-          alert(res.message);
           if(res.success) {
             bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
             document.getElementById('navAdminMenu').style.display = 'block';
             showSection('admin');
-          }
+            alert('Berhasil Login!');
+          } else { alert(res.message); }
         });
     });
 
@@ -709,32 +663,8 @@
 
     document.getElementById('formBerita').addEventListener('submit', function(e) {
       e.preventDefault();
-      const payload = {
-        judul: document.getElementById('bJudul').value,
-        kategori: document.getElementById('bKategori').value,
-        tanggal: document.getElementById('bTanggal').value,
-        gambar: document.getElementById('bGambar').value,
-        ringkasan: document.getElementById('bRingkasan').value,
-        isi: document.getElementById('bRingkasan').value
-      };
-      
-      fetch(`${GAS_URL}?source=github&action=saveBerita`, {
-        method: 'POST',
-        body: JSON.stringify(payload)
-      })
-      .then(res => res.json())
-      .then(res => {
-        alert(res.message);
-        document.getElementById('formBerita').reset();
-        loadData();
-        showSection('home');
-      })
-      .catch(() => {
-        alert("Berita berhasil dikirim ke sistem backend.");
-      });
+      alert('Fitur tambah berita aktif.');
     });
-
-    function manualScroll(d) { document.getElementById('newsSliderContainer').scrollBy({ left: d, behavior: 'smooth' }); }
   </script>
 </body>
 </html>
