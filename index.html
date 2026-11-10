@@ -142,6 +142,12 @@
       padding: 6px 14px;
     }
 
+    @media (max-width: 576px) {
+      .hero-wa-badge-absolute { bottom: 10px; right: 10px; }
+      .wa-label { font-size: 0.6rem; padding: 4px 8px; }
+      .wa-number { font-size: 0.7rem; padding: 4px 10px; }
+    }
+
     /* NEWS SLIDER VERTICAL */
     .news-slider-container {
       display: flex;
@@ -253,7 +259,7 @@
       100% { transform: translate3d(-100%, 0, 0); }
     }
 
-    /* BAGIAN BAWAH INDEKS */
+    /* BAGIAN BAWAH INDEKS: TERKINI & TERPOPULER */
     .pojok-aser-section {
       background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f8fafc 100%);
       border: 1px solid #bbf7d0;
@@ -263,6 +269,7 @@
       box-shadow: 0 8px 20px rgba(4, 120, 87, 0.06);
       width: 100%;
     }
+    
     .section-heading-bar {
       display: flex;
       justify-content: space-between;
@@ -271,7 +278,20 @@
       padding-bottom: 8px;
       margin-bottom: 20px;
     }
-    .section-heading-title { font-weight: 800; color: #065f46; font-size: 1.2rem; margin: 0; text-transform: uppercase; }
+    .section-heading-title {
+      font-weight: 800;
+      color: #065f46;
+      font-size: 1.2rem;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    .section-heading-link {
+      color: #047857;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
     .terkini-card {
       background: #ffffff;
       border-radius: 10px;
@@ -282,17 +302,327 @@
       display: flex;
       flex-direction: column;
     }
-    .terkini-img-box { width: 100%; height: 190px; background-color: #0f172a; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .terkini-img-box {
+      width: 100%;
+      height: 190px;
+      background-color: #0f172a;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .terkini-img { width: 100%; height: 100%; object-fit: cover; }
     .terkini-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .terkini-kat { font-size: 0.65rem; font-weight: 700; color: #047857; text-transform: uppercase; margin-bottom: 6px; display: block; }
-    .terkini-title { font-size: 0.95rem; font-weight: 800; color: #1e293b; line-height: 1.35; margin-bottom: 8px; }
+    .terkini-kat {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #047857;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .terkini-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1e293b;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
     .news-date { font-size: 0.75rem; color: #64748b; }
 
-    .popular-item { display: flex; align-items: flex-start; gap: 12px; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; }
-    .popular-number { font-size: 1.8rem; font-weight: 900; color: #047857; line-height: 1; min-width: 30px; text-align: center; }
+    .popular-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .popular-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .popular-number {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #047857;
+      line-height: 1;
+      min-width: 30px;
+      text-align: center;
+    }
+    .popular-content { display: flex; flex-direction: column; }
     .popular-kat { font-size: 0.6rem; font-weight: 700; color: #047857; text-transform: uppercase; margin-bottom: 2px; }
-    .popular-title { font-size: 0.8rem; font-weight: 700; color: #1e293b; line-height: 1.3; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .popular-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* SECTION RINGKASAN SARANA */
+    .ringkasan-sarana-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 30px 25px;
+      margin-top: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .sarana-badge-sub {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #047857;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .sarana-main-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+    .sarana-desc { font-size: 0.85rem; color: #4b5563; margin-bottom: 0; }
+    .sarana-nav-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #334155;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .sarana-nav-btn:hover { background: #f1f5f9; border-color: #94a3b8; }
+    
+    .sarana-slider-box {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 25px;
+    }
+    .sarana-slider-box::-webkit-scrollbar { display: none; }
+    .sarana-card {
+      flex: 0 0 260px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .sarana-card-img { width: 100%; height: 170px; object-fit: cover; background-color: #000; }
+    .sarana-card-body { padding: 14px; }
+    .sarana-card-badge {
+      display: inline-block;
+      background-color: #ecfdf5;
+      color: #047857;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      border: 1px solid #bbf7d0;
+    }
+    .sarana-card-title { font-size: 0.95rem; font-weight: 800; color: #1e293b; margin-bottom: 8px; }
+    .sarana-card-info { font-size: 0.75rem; color: #64748b; display: flex; align-items: center; gap: 6px; }
+
+    /* SECTION PROGRAM UNGGULAN */
+    .program-unggulan-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 30px 25px;
+      margin-top: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .program-slider-box {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 25px;
+    }
+    .program-slider-box::-webkit-scrollbar { display: none; }
+    .program-card {
+      flex: 0 0 310px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .program-card-img { width: 100%; height: 190px; object-fit: cover; background-color: #000; }
+    .program-card-body { padding: 18px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+    .program-card-badge {
+      display: inline-block;
+      background-color: #065f46;
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .program-card-title { font-size: 1rem; font-weight: 900; color: #111827; margin-bottom: 8px; }
+    .program-card-desc { font-size: 0.8rem; color: #4b5563; line-height: 1.4; margin-bottom: 15px; }
+
+    /* SECTION EKSTRAKURIKULER */
+    .ekskul-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 30px 25px;
+      margin-top: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .ekskul-slider-box {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 25px;
+    }
+    .ekskul-slider-box::-webkit-scrollbar { display: none; }
+    .ekskul-card {
+      flex: 0 0 310px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .ekskul-img-wrap { position: relative; width: 100%; height: 190px; background-color: #000; }
+    .ekskul-img { width: 100%; height: 100%; object-fit: cover; }
+    .ekskul-badge-float {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+    .ekskul-badge-icon {
+      width: 32px;
+      height: 32px;
+      background: #047857;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.8rem;
+    }
+    .ekskul-badge-text { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+    .ekskul-body { padding: 18px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+    .ekskul-title { font-size: 1rem; font-weight: 900; color: #111827; margin-bottom: 6px; }
+    .ekskul-desc { font-size: 0.8rem; color: #4b5563; line-height: 1.4; margin-bottom: 15px; }
+
+    /* SECTION PRESTASI */
+    .prestasi-section-container { margin-top: 40px; }
+    .prestasi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 992px) { .prestasi-grid { grid-template-columns: 1fr; } }
+    .prestasi-box-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .prestasi-box-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .prestasi-header-title { display: flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 900; color: #111827; }
+    .prestasi-header-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.85rem; }
+    .prestasi-data-count {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #bbf7d0;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .prestasi-main-img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; background-color: #000; }
+    .prestasi-item-title { font-size: 1.05rem; font-weight: 900; color: #1e293b; margin-bottom: 8px; }
+    .prestasi-desc { font-size: 0.8rem; color: #4b5563; line-height: 1.4; margin-bottom: 15px; }
+
+    /* WIDGET JADWAL SHOLAT */
+    .jadwal-sholat-full-section {
+      background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 50%, #e6f4ea 100%);
+      border-top: 1px solid #a7f3d0;
+      border-bottom: 1px solid #a7f3d0;
+      padding: 30px 15px;
+      margin-top: 40px;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: inset 0 4px 15px rgba(4, 120, 87, 0.05);
+    }
+    .sholat-header-title { font-size: 1.4rem; font-weight: 800; color: #065f46; margin: 0; }
+    .sholat-date-sub { font-size: 0.8rem; color: #334155; font-weight: 600; margin-top: 2px; }
+    .sholat-search-box {
+      background: #ffffff;
+      border: 1px solid #047857;
+      border-radius: 20px;
+      padding: 6px 15px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 240px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    }
+    .sholat-search-box input { border: none; background: transparent; outline: none; font-size: 0.85rem; width: 100%; color: #334155; }
+    .sholat-search-box i { color: #047857; font-size: 0.9rem; }
+    
+    .sholat-card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    @media (min-width: 992px) { .sholat-card-grid { grid-template-columns: repeat(8, 1fr); } }
+    @media (max-width: 576px) { .sholat-card-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .sholat-card-item {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px 6px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: transform 0.2s;
+    }
+    .sholat-card-item:hover { transform: translateY(-2px); border-color: #047857; }
+    .sholat-name { font-size: 0.75rem; color: #334155; font-weight: 600; margin-bottom: 4px; }
+    .sholat-time { font-size: 1rem; font-weight: 800; color: #065f46; }
 
     .school-logo { width: 40px; height: 40px; object-fit: contain; background: white; border-radius: 50%; padding: 2px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
     .social-icon-btn { width: 32px; height: 32px; background-color: #ffffff; color: var(--navy-dark); display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 0.9rem; }
@@ -325,6 +655,10 @@
       </div>
       
       <div class="d-flex align-items-center gap-2 flex-wrap justify-content-center mt-2 mt-md-0">
+        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://whatsapp.com" target="_blank" class="social-icon-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
         <button class="btn btn-warning btn-sm fw-bold px-3 ms-1" onclick="openLoginModal()"><i class="fa-solid fa-lock me-1"></i> Login Admin</button>
       </div>
     </div>
@@ -443,6 +777,145 @@
           </div>
         </div>
       </div>
+
+      <!-- RINGKASAN SARANA -->
+      <div class="ringkasan-sarana-container">
+        <div class="row align-items-end mb-3">
+          <div class="col-md-8">
+            <span class="sarana-badge-sub">SARANA MADRASAH</span>
+            <h2 class="sarana-main-title">Ringkasan Sarana</h2>
+            <p class="sarana-desc">Fasilitas utama yang menunjang kegiatan belajar di madrasah.</p>
+          </div>
+          <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            <div class="d-flex align-items-center justify-content-md-end gap-2">
+              <button class="sarana-nav-btn" onclick="scrollSarana(-280)"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="sarana-nav-btn" onclick="scrollSarana(280)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="sarana-slider-box" id="saranaSliderBox">
+          <div class="sarana-card">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=500&q=80" class="sarana-card-img" alt="Kelas">
+            <div class="sarana-card-body">
+              <span class="sarana-card-badge">Ruang Kelas</span>
+              <h5 class="sarana-card-title">Ruang Kelas</h5>
+              <div class="sarana-card-info"><i class="fa-solid fa-building text-secondary"></i> 18 Ruang &nbsp;&bull;&nbsp; Gedung A dan B</div>
+            </div>
+          </div>
+          <div class="sarana-card">
+            <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=500&q=80" class="sarana-card-img" alt="Perpus">
+            <div class="sarana-card-body">
+              <span class="sarana-card-badge">Perpustakaan</span>
+              <h5 class="sarana-card-title">Perpustakaan Sekolah</h5>
+              <div class="sarana-card-info"><i class="fa-solid fa-book text-secondary"></i> 1 Ruang &nbsp;&bull;&nbsp; Lantai 1</div>
+            </div>
+          </div>
+          <div class="sarana-card">
+            <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=500&q=80" class="sarana-card-img" alt="Lab">
+            <div class="sarana-card-body">
+              <span class="sarana-card-badge">Laboratorium</span>
+              <h5 class="sarana-card-title">Laboratorium Komputer</h5>
+              <div class="sarana-card-info"><i class="fa-solid fa-desktop text-secondary"></i> 2 Ruang &nbsp;&bull;&nbsp; Gedung Lab</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROGRAM UNGGULAN -->
+      <div class="program-unggulan-container">
+        <div class="row align-items-end mb-3">
+          <div class="col-md-8">
+            <span class="sarana-badge-sub"><i class="fa-solid fa-award me-1"></i> PROGRAM</span>
+            <h2 class="sarana-main-title">Program Unggulan</h2>
+            <p class="sarana-desc">Pembelajaran adaptif untuk masa depan.</p>
+          </div>
+        </div>
+        <div class="program-slider-box">
+          <div class="program-card">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=500&q=80" class="program-card-img" alt="Projek">
+            <div class="program-card-body">
+              <span class="program-card-badge">Akademik</span>
+              <h5 class="program-card-title">Pembelajaran Berbasis Projek</h5>
+              <p class="program-card-desc">Siswa belajar melalui proyek lintas mata pelajaran agar mampu meneliti dan memecahkan masalah.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EKSTRAKURIKULER -->
+      <div class="ekskul-container">
+        <div class="row align-items-end mb-3">
+          <div class="col-md-8">
+            <span class="sarana-badge-sub"><i class="fa-solid fa-shield-halved me-1"></i> KEGIATAN SISWA</span>
+            <h2 class="sarana-main-title">Ekstrakurikuler</h2>
+            <p class="sarana-desc">Ruang pembinaan minat, bakat, kreativitas, dan kepemimpinan siswa.</p>
+          </div>
+        </div>
+        <div class="ekskul-slider-box">
+          <div class="ekskul-card">
+            <div class="ekskul-img-wrap">
+              <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500&q=80" class="ekskul-img" alt="Futsal">
+              <div class="ekskul-badge-float">
+                <div class="ekskul-badge-icon">FS</div>
+                <div class="ekskul-badge-text">FUTSAL</div>
+              </div>
+            </div>
+            <div class="ekskul-body">
+              <h5 class="ekskul-title">Futsal</h5>
+              <p class="ekskul-desc">Kegiatan olahraga tim untuk membangun kebugaran dan sportivitas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRESTASI -->
+      <div class="prestasi-section-container">
+        <div class="prestasi-grid">
+          <div class="prestasi-box-card">
+            <div>
+              <div class="prestasi-box-header">
+                <div class="prestasi-header-title">
+                  <div class="prestasi-header-icon" style="background: #f59e0b;"><i class="fa-solid fa-trophy"></i></div>
+                  Prestasi Madrasah
+                </div>
+                <span class="prestasi-data-count">3 data</span>
+              </div>
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=500&q=80" class="prestasi-main-img" alt="Prestasi">
+              <h5 class="prestasi-item-title">Sekolah Adiwiyata Tingkat Kabupaten</h5>
+              <p class="prestasi-desc">Penghargaan atas komitmen sekolah dalam budaya lingkungan dan kebersihan.</p>
+            </div>
+          </div>
+          <div class="prestasi-box-card">
+            <div>
+              <div class="prestasi-box-header">
+                <div class="prestasi-header-title">
+                  <div class="prestasi-header-icon" style="background: #2563eb;"><i class="fa-solid fa-user-graduate"></i></div>
+                  Prestasi Siswa
+                </div>
+                <span class="prestasi-data-count">3 data</span>
+              </div>
+              <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=500&q=80" class="prestasi-main-img" alt="Siswa">
+              <h5 class="prestasi-item-title">Juara 1 Olimpiade Matematika Provinsi</h5>
+              <p class="prestasi-desc">Prestasi akademik siswa dalam kompetisi matematika tingkat provinsi.</p>
+            </div>
+          </div>
+          <div class="prestasi-box-card">
+            <div>
+              <div class="prestasi-box-header">
+                <div class="prestasi-header-title">
+                  <div class="prestasi-header-icon" style="background: #059669;"><i class="fa-solid fa-chalkboard-user"></i></div>
+                  Prestasi Guru
+                </div>
+                <span class="prestasi-data-count">3 data</span>
+              </div>
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" class="prestasi-main-img" alt="Guru">
+              <h5 class="prestasi-item-title">Guru Inovatif Pembelajaran Digital</h5>
+              <p class="prestasi-desc">Penghargaan untuk inovasi pembelajaran berbasis teknologi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- SECTION ADMIN (DASHBOARD) -->
@@ -501,10 +974,53 @@
     </div>
   </div>
 
+  <!-- WIDGET JADWAL SHOLAT -->
+  <div class="jadwal-sholat-full-section">
+    <div class="container px-3">
+      <div class="row align-items-center mb-3">
+        <div class="col-md-8">
+          <h3 class="sholat-header-title">Jadwal Sholat</h3>
+          <div class="sholat-date-sub" id="sholatCurrentDate">Minggu, 08/11/2026</div>
+        </div>
+        <div class="col-md-4 text-md-end mt-2 mt-md-0">
+          <div class="sholat-search-box ms-md-auto">
+            <input type="text" id="sholatCityInput" value="Bantaeng" readonly>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="sholat-card-grid">
+        <div class="sholat-card-item"><div class="sholat-name">Imsak</div><div class="sholat-time">03:57</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Subuh</div><div class="sholat-time">04:07</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Terbit</div><div class="sholat-time">05:22</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Dhuha</div><div class="sholat-time">05:50</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Dzuhur</div><div class="sholat-time">11:40</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Ashar</div><div class="sholat-time">14:58</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Maghrib</div><div class="sholat-time">17:51</div></div>
+        <div class="sholat-card-item"><div class="sholat-name">Isya</div><div class="sholat-time">19:03</div></div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="footer-custom">
-    <div class="container px-3 text-center">
-      <small>© Copyright 2026 - MAS. AS'ADIYAH ERENG-ERENG. All Rights Reserved.</small>
+    <div class="container px-3">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <div class="d-flex align-items-start gap-3">
+            <img id="footerLogo" src="https://via.placeholder.com/50?text=Logo" class="school-logo flex-shrink-0" alt="Logo">
+            <div>
+              <h5 class="footer-brand-title" style="color: #fff; font-weight: 700;">MAS. AS'ADIYAH ERENG-ERENG</h5>
+              <p class="footer-desc">Jl. H. Muh Thahir, Kab. Bantaeng, Provinsi Sulawesi Selatan<br>No. Telepon: 0812 43318115</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr style="border-color: #2d3748; margin-top: 25px; margin-bottom: 15px;">
+      <div class="text-center">
+        <small>© Copyright 2026 - MAS. AS'ADIYAH ERENG-ERENG. All Rights Reserved.</small>
+      </div>
     </div>
   </footer>
 
@@ -532,14 +1048,25 @@
     const GAS_URL = "https://script.google.com/macros/s/AKfycbzpy4wN1nRu5G1RLE7MxIT-DvEsYFAuHkz9R0AB-L0TTpYP_BvN1euDiOV088QgNsLK2A/exec";
 
     let appData = { berita: [], profil: [] };
+    let isHovered = false;
+    let scrollSpeed = 0.5;
 
-    document.addEventListener('DOMContentLoaded', () => { loadData(); });
+    document.addEventListener('DOMContentLoaded', () => { 
+      loadData(); 
+      initSmoothAutoScroll();
+      initSholatWidget();
+    });
+
+    function scrollSarana(direction) {
+      document.getElementById('saranaSliderBox').scrollBy({ left: direction, behavior: 'smooth' });
+    }
 
     function loadData() {
       fetch(`${GAS_URL}?source=github`)
         .then(response => response.json())
         .then(res => {
           appData = res;
+          renderHeaderLogo();
           renderPublicNews();
           renderTickerData();
           renderTerkiniDanTerpopuler();
@@ -562,6 +1089,38 @@
         if (match && match[1]) return 'https://lh3.googleusercontent.com/d/' + match[1];
       }
       return url;
+    }
+
+    function renderHeaderLogo() {
+      let logoUrl = "https://i.ibb.co.com/39hN7h3/kemenag-logo.png";
+      if (appData.profil && appData.profil.length > 0 && appData.profil[0].logo) {
+        let dbLogo = fixDriveUrl(appData.profil[0].logo);
+        if(dbLogo.trim() !== '') logoUrl = dbLogo;
+      }
+      const hLogo = document.getElementById('headerLogo');
+      const fLogo = document.getElementById('footerLogo');
+      if(hLogo) hLogo.src = logoUrl;
+      if(fLogo) fLogo.src = logoUrl;
+    }
+
+    function initSmoothAutoScroll() {
+      const container = document.getElementById('newsSliderContainer');
+      const wrapper = document.getElementById('sliderWrapper');
+      if (!container || !wrapper) return;
+
+      wrapper.addEventListener('mouseenter', () => { isHovered = true; });
+      wrapper.addEventListener('mouseleave', () => { isHovered = false; });
+
+      function step() {
+        if (!isHovered) {
+          container.scrollLeft += scrollSpeed;
+          if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 2) {
+            container.scrollLeft = 0;
+          }
+        }
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
     }
 
     function renderTickerData() {
@@ -643,6 +1202,13 @@
       }).join('');
     }
 
+    function initSholatWidget() {
+      const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      const now = new Date();
+      const sDate = document.getElementById('sholatCurrentDate');
+      if(sDate) sDate.innerText = `${days[now.getDay()]}, ${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+    }
+
     function showSection(secName) {
       document.querySelectorAll('.page-section').forEach(el => el.classList.add('d-none'));
       document.getElementById('section-' + secName).classList.remove('d-none');
@@ -672,10 +1238,8 @@
 
     function logoutAdmin() {
       document.getElementById('navAdminMenu').style.display = 'none';
-      showShopHome();
+      showSection('home');
     }
-
-    function showShopHome() { showSection('home'); }
 
     document.getElementById('formBerita').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -720,7 +1284,7 @@
 
       fetch(GAS_URL, {
         method: 'POST',
-        body: JSON.svg ? JSON.stringify(payload) : JSON.stringify(payload)
+        body: JSON.stringify(payload)
       })
       .then(res => res.json())
       .then(res => {
