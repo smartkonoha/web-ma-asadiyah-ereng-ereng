@@ -13,7 +13,8 @@
       --navy-main: #1E3A8A;
       --gold-accent: #D97706;
       --bg-gray: #F8FAFC;
-      --glow-color: rgba(253, 224, 71, 0.4);
+      --glow-color: rgba(253, 224, 71, 0.5);
+      --glow-emerald: rgba(16, 185, 129, 0.4);
     }
     *, *::before, *::after { box-sizing: border-box; }
     html, body {
@@ -30,24 +31,24 @@
     .header-top { background-color: var(--navy-dark); color: #fff; padding: 12px 0; border-bottom: 3px solid var(--gold-accent); }
     .header-top .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; width: 100%; }
     
-    /* NAVBAR & DROPDOWN HOVER STYLING */
-    .navbar-main { background-color: var(--navy-main); box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1020; width: 100%; }
-    .navbar-main .nav-link { color: #fff !important; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; padding: 10px 16px !important; cursor: pointer; transition: all 0.3s ease; border-radius: 4px; }
+    /* NAVBAR & DROPDOWN HOVER STYLING DENGAN SENTUHAN MENYALA HALUS */
+    .navbar-main { background-color: var(--navy-main); box-shadow: 0 4px 20px rgba(30, 58, 138, 0.25); position: sticky; top: 0; z-index: 1020; width: 100%; border-bottom: 2px solid rgba(217, 119, 6, 0.3); }
+    .navbar-main .nav-link { color: #fff !important; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; padding: 10px 16px !important; cursor: pointer; transition: all 0.3s ease; border-radius: 6px; }
     
     .navbar-main .nav-link:hover, 
     .navbar-main .nav-link:focus,
     .navbar-main .show > .nav-link { 
-      background-color: rgba(255, 255, 255, 0.15); 
+      background-color: rgba(255, 255, 255, 0.12); 
       color: #FDE047 !important; 
-      box-shadow: 0 0 10px var(--glow-color);
+      box-shadow: 0 0 15px var(--glow-color);
       transform: translateY(-1px);
     }
 
     .dropdown-menu {
       background-color: var(--navy-dark);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(253, 224, 71, 0.2);
+      border-radius: 10px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 15px rgba(10, 25, 47, 0.8);
       padding: 8px 0;
       margin-top: 0;
       opacity: 0;
@@ -72,7 +73,7 @@
         padding: 15px;
         border-radius: 8px;
         margin-top: 10px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       }
       .dropdown-menu {
         position: static !important;
@@ -85,7 +86,7 @@
         opacity: 1;
         visibility: visible;
         transform: none;
-        display: none; /* Ditampilkan otomatis oleh Bootstrap saat diklik */
+        display: none;
         padding-left: 10px;
       }
       .dropdown-menu.show {
@@ -102,19 +103,19 @@
     }
 
     .dropdown-item:hover, .dropdown-item:focus {
-      background-color: rgba(217, 119, 6, 0.2);
+      background-color: rgba(217, 119, 6, 0.25);
       color: #FDE047 !important;
       padding-left: 24px;
-      box-shadow: inset 3px 0 0 var(--gold-accent);
+      box-shadow: inset 3px 0 0 var(--gold-accent), 0 0 10px rgba(217, 119, 6, 0.3);
     }
     
-    /* EFEK MELAYANG (SLIDE UP & FADE IN) */
+    /* EFEK MELAYANG (SLIDE UP & FADE IN) DENGAN GLOW HALUS */
     .hero-image-banner-box {
       position: relative;
       width: 100%;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(30, 58, 138, 0.15);
       margin-bottom: 25px;
       background-color: #0f172a;
       opacity: 0;
@@ -135,7 +136,7 @@
       object-fit: cover;
     }
     
-    /* TOMBOL WHATSAPP CENTER */
+    /* TOMBOL WHATSAPP CENTER DENGAN EFEK MENYALA HIJAU HALUS */
     .hero-wa-badge-absolute {
       position: absolute;
       bottom: 15px;
@@ -148,11 +149,15 @@
       background: #ffffff;
       border-radius: 30px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(4, 120, 87, 0.4);
       text-decoration: none;
-      transition: transform 0.2s;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(16, 185, 129, 0.5);
     }
-    .wa-center-pill:hover { transform: scale(1.03); }
+    .wa-center-pill:hover { 
+      transform: scale(1.05); 
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.8);
+    }
     .wa-label {
       background-color: #047857;
       color: #fff;
@@ -201,8 +206,13 @@
       height: 240px;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
       background-color: #000;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .card-img-wrapper:hover {
+      box-shadow: 0 0 15px rgba(30, 58, 138, 0.3);
     }
     .card-img-wrapper img {
       width: 100%;
@@ -245,13 +255,15 @@
       color: var(--navy-main);
       border: none;
       border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       z-index: 10;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      transition: all 0.2s;
     }
+    .btn-slide-control:hover { background-color: var(--navy-main); color: #fff; box-shadow: 0 0 12px var(--glow-color); }
     .btn-prev { left: -8px; }
     .btn-next { right: -8px; }
 
@@ -259,7 +271,7 @@
     .ticker-container {
       background-color: #fff;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -277,6 +289,7 @@
       text-transform: uppercase;
       white-space: nowrap;
       z-index: 2;
+      box-shadow: 2px 0 10px rgba(4, 120, 87, 0.3);
     }
     .ticker-wrap { overflow: hidden; width: 100%; white-space: nowrap; }
     .ticker-content { display: inline-block; animation: tickerAnimation 30s linear infinite; padding-left: 100%; }
@@ -294,7 +307,7 @@
       border-radius: 12px;
       padding: 20px 15px;
       margin-top: 40px;
-      box-shadow: 0 8px 20px rgba(4, 120, 87, 0.06);
+      box-shadow: 0 10px 25px rgba(4, 120, 87, 0.06);
       width: 100%;
     }
     
@@ -329,6 +342,11 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .terkini-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(4, 120, 87, 0.15);
     }
     .terkini-img-box {
       width: 100%;
@@ -365,7 +383,9 @@
       padding-bottom: 12px;
       margin-bottom: 12px;
       border-bottom: 1px solid #e2e8f0;
+      transition: transform 0.2s;
     }
+    .popular-item:hover { transform: translateX(3px); }
     .popular-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .popular-number {
       font-size: 1.8rem;
@@ -427,7 +447,7 @@
       cursor: pointer;
       transition: 0.2s;
     }
-    .sarana-nav-btn:hover { background: #f1f5f9; border-color: #94a3b8; }
+    .sarana-nav-btn:hover { background: #047857; color: #fff; border-color: #047857; box-shadow: 0 0 10px rgba(4,120,87,0.3); }
     
     .sarana-slider-box {
       display: flex;
@@ -449,7 +469,9 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
+      transition: transform 0.3s;
     }
+    .sarana-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
     .sarana-card-img { width: 100%; height: 170px; object-fit: cover; background-color: #000; }
     .sarana-card-body { padding: 14px; }
     .sarana-card-badge {
@@ -495,7 +517,9 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
+      transition: transform 0.3s;
     }
+    .program-card:hover { transform: translateY(-3px); }
     .program-card-img { width: 100%; height: 190px; object-fit: cover; background-color: #000; }
     .program-card-body { padding: 18px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
     .program-card-badge {
@@ -540,7 +564,9 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
+      transition: transform 0.3s;
     }
+    .ekskul-card:hover { transform: translateY(-3px); }
     .ekskul-img-wrap { position: relative; width: 100%; height: 190px; background-color: #000; }
     .ekskul-img { width: 100%; height: 100%; object-fit: cover; }
     .ekskul-badge-float {
@@ -586,7 +612,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
+    .prestasi-box-card:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
     .prestasi-box-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
     .prestasi-header-title { display: flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 900; color: #111827; }
     .prestasi-header-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.85rem; }
@@ -646,15 +674,15 @@
       padding: 12px 6px;
       text-align: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-      transition: transform 0.2s;
+      transition: all 0.2s;
     }
-    .sholat-card-item:hover { transform: translateY(-2px); border-color: #047857; }
+    .sholat-card-item:hover { transform: translateY(-2px); border-color: #047857; box-shadow: 0 0 10px rgba(4,120,87,0.2); }
     .sholat-name { font-size: 0.75rem; color: #334155; font-weight: 600; margin-bottom: 4px; }
     .sholat-time { font-size: 1rem; font-weight: 800; color: #065f46; }
 
     .school-logo { width: 40px; height: 40px; object-fit: contain; background: white; border-radius: 50%; padding: 2px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-    .social-icon-btn { width: 32px; height: 32px; background-color: #ffffff; color: var(--navy-dark); display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 0.9rem; }
-    .social-icon-btn:hover { background-color: var(--gold-accent); color: #ffffff; }
+    .social-icon-btn { width: 32px; height: 32px; background-color: #ffffff; color: var(--navy-dark); display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 0.9rem; transition: all 0.2s; }
+    .social-icon-btn:hover { background-color: var(--gold-accent); color: #ffffff; box-shadow: 0 0 10px var(--glow-color); }
     .card-custom { border: none; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); background: #fff; overflow: hidden; width: 100%; }
     #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); display: flex; justify-content: center; align-items: center; z-index: 9999; }
     
@@ -687,7 +715,7 @@
         <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="https://whatsapp.com" target="_blank" class="social-icon-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <button class="btn btn-warning btn-sm fw-bold px-3 ms-1" onclick="openLoginModal()"><i class="fa-solid fa-lock me-1"></i> Login Admin</button>
+        <button class="btn btn-warning btn-sm fw-bold px-3 ms-1 shadow-sm" style="box-shadow: 0 0 10px rgba(217, 119, 6, 0.4);" onclick="openLoginModal()"><i class="fa-solid fa-lock me-1"></i> Login Admin</button>
       </div>
     </div>
   </header>
@@ -729,7 +757,7 @@
               <i class="fa-solid fa-user-plus me-1"></i> SPMB
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Pendaftaran Murid</a></li>
+              <li><a class="dropdown-item" href="#" onclick="openPpdbModal(event)"><i class="fa-solid fa-file-invoice text-warning me-1"></i> Pendaftaran Murid</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -1055,7 +1083,7 @@
   <!-- MODAL LOGIN -->
   <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+      <div class="modal-content border-0 shadow-lg">
         <div class="modal-header text-white" style="background-color: var(--navy-dark);">
           <h5 class="modal-title">Login Admin</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
@@ -1064,8 +1092,36 @@
           <form id="formLogin">
             <div class="mb-3"><label class="form-label fw-bold">Username</label><input type="text" id="loginUser" class="form-control" required></div>
             <div class="mb-3"><label class="form-label fw-bold">Password</label><input type="password" id="loginPass" class="form-control" required></div>
-            <button type="submit" class="btn btn-primary w-100 fw-bold py-2">Masuk</button>
+            <button type="submit" class="btn btn-primary w-100 fw-bold py-2 shadow-sm">Masuk</button>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL POP-UP BROSUR PPDB (PENDAFTARAN MURID) -->
+  <div class="modal fade" id="ppdbModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="background-color: #0A192F; border-radius: 14px; overflow: hidden;">
+        <div class="modal-header border-bottom border-secondary py-3">
+          <h5 class="modal-title text-white fw-bold fs-5">
+            <i class="fa-solid fa-bullhorn text-warning me-2"></i> Informasi Pendaftaran Peserta Didik Baru (PPDB)
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-3 p-md-4 text-center">
+          <!-- Kotak Peringatan Penutupan Pendaftaran -->
+          <div class="alert alert-warning py-2 px-3 mb-3 fw-bold text-dark rounded-3 shadow-sm d-inline-flex align-items-center gap-2" style="font-size: 0.9rem;">
+            <i class="fa-solid fa-triangle-exclamation text-danger fs-5"></i>
+            <span>Mohon maaf, pendaftaran untuk sementara ditutup.</span>
+          </div>
+          <!-- Gambar Brosur PPDB -->
+          <div style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <img src="https://lh3.googleusercontent.com/d/1asnPmHibXD5jeMjthxIdzDaYEHtduFNV" alt="Brosur PPDB" class="img-fluid w-100" style="max-height: 75vh; object-fit: contain;" onerror="this.src='https://via.placeholder.com/1200x850?text=Brosur+PPDB+MAS+Asadiyah'">
+          </div>
+        </div>
+        <div class="modal-footer border-top border-secondary py-2 justify-content-center">
+          <button type="button" class="btn btn-secondary btn-sm px-4 fw-bold rounded-pill" data-bs-dismiss="modal">Tutup</button>
         </div>
       </div>
     </div>
@@ -1084,6 +1140,15 @@
       initSmoothAutoScroll();
       initSholatWidget();
     });
+
+    function openPpdbModal(event) {
+      if(event) event.preventDefault();
+      const modalEl = document.getElementById('ppdbModal');
+      if(modalEl) {
+        let ppdbModalInstance = new bootstrap.Modal(modalEl);
+        ppdbModalInstance.show();
+      }
+    }
 
     function scrollSarana(direction) {
       document.getElementById('saranaSliderBox').scrollBy({ left: direction, behavior: 'smooth' });
