@@ -65,6 +65,34 @@
       }
     }
 
+    /* PERBAIKAN KHUSUS MOBILE / HP AGAR SUB-MENU MUNCUL SEMPURNA */
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        background-color: var(--navy-main);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      }
+      .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+        margin-top: 5px;
+        background-color: rgba(10, 25, 47, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none; /* Ditampilkan otomatis oleh Bootstrap saat diklik */
+        padding-left: 10px;
+      }
+      .dropdown-menu.show {
+        display: block !important;
+      }
+    }
+
     .dropdown-item {
       color: #cbd5e1 !important;
       font-size: 0.85rem;
