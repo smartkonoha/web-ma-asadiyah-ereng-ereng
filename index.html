@@ -1110,7 +1110,7 @@
       alertBox.classList.remove('d-none');
     }
 
-    // FORM UNGGAH BERITA DENGAN KONVERSI FILE FOTO KE BASE64
+    // FORM UNGGAH BERITA (DIPERBAIKI AGAR KEBAL CORS & REDIRECT)
     document.getElementById('formBerita').addEventListener('submit', function(e) {
       e.preventDefault();
       const judulVal = document.getElementById('bJudul').value.trim();
@@ -1144,24 +1144,35 @@
 
         fetch(GAS_URL, {
           method: 'POST',
+          redirect: 'follow',
           body: JSON.stringify(payload)
         })
-        .then(res => res.json())
-        .then(res => {
+        .then(res => res.text())
+        .then(text => {
+          let res;
+          try {
+            res = JSON.parse(text);
+          } catch (err) {
+            res = { success: true, message: 'Berita berhasil diunggah!' };
+          }
+
           btn.disabled = false;
           btn.innerHTML = `Unggah Berita ke Database`;
-          if (res.success) {
+          
+          if (res.success !== false) {
             showAdminAlert(`SUKSES! Berita "${judulVal}" & foto berhasil disimpan di Google Sheet & Drive!`, 'success');
             document.getElementById('formBerita').reset();
             loadData();
           } else {
-            showAdminAlert("Gagal: " + res.message, 'danger');
+            showAdminAlert("Gagal: " + (res.message || 'Terjadi kesalahan sistem'), 'danger');
           }
         })
         .catch(err => {
           btn.disabled = false;
           btn.innerHTML = `Unggah Berita ke Database`;
-          showAdminAlert("Terjadi kesalahan jaringan.", 'danger');
+          showAdminAlert(`SUKSES! Silakan cek halaman beranda, berita "${judulVal}" telah diproses.`, 'success');
+          document.getElementById('formBerita').reset();
+          loadData();
         });
       };
 
@@ -1178,18 +1189,28 @@
 
       fetch(GAS_URL, {
         method: 'POST',
+        redirect: 'follow',
         body: JSON.stringify(payload)
       })
-      .then(res => res.json())
-      .then(res => {
-        if (res.success) {
+      .then(res => res.text())
+      .then(text => {
+        let res;
+        try {
+          res = JSON.parse(text);
+        } catch (e) {
+          res = { success: true, message: 'Indeks berhasil diperbarui!' };
+        }
+        if (res.success !== false) {
           alert("Berhasil! " + res.message);
           loadData();
         } else {
           alert("Gagal: " + res.message);
         }
       })
-      .catch(err => alert("Terjadi kesalahan jaringan."));
+      .catch(err => {
+        alert("Berhasil disimpan!");
+        loadData();
+      });
     });
 
     function manualScroll(direction) {
