@@ -58,19 +58,15 @@
       transform: translateY(10px);
     }
 
+    /* DESKTOP (Layar Lebar >= 992px) */
     @media (min-width: 992px) {
       .dropdown:hover > .dropdown-menu {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
       }
-      
-      /* MULTI-LEVEL SUBMENU SARPRAS UNTUK DESKTOP */
       .dropdown-submenu {
         position: relative;
-      }
-      .dropdown-submenu > a::after {
-        display: none !important;
       }
       .dropdown-submenu > .dropdown-menu {
         top: 0;
@@ -85,7 +81,7 @@
       }
     }
 
-    /* PERBAIKAN KHUSUS MOBILE / HP AGAR SUB-MENU SARPRAS MUNCUL & BISA DIKLIK */
+    /* MOBILE / HP (Layar Sempit < 992px) - DIPERBAIKI AGAR SUBMENU TURUN KE BAWAH */
     @media (max-width: 991.98px) {
       .navbar-collapse {
         background-color: var(--navy-main);
@@ -93,8 +89,6 @@
         border-radius: 8px;
         margin-top: 10px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        max-height: 80vh;
-        overflow-y: auto;
       }
       .dropdown-menu {
         position: static !important;
@@ -113,15 +107,16 @@
       .dropdown-menu.show {
         display: block !important;
       }
-      /* Submenu Sarpras di Mobile */
+      /* Membuat Submenu Sarpras di HP ikut turun ke bawah dengan indentasi rapi */
       .dropdown-submenu > .dropdown-menu {
-        padding-left: 20px;
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        margin-left: 0 !important;
+        margin-top: 5px !important;
+        padding-left: 15px !important;
         border-left: 2px solid var(--gold-accent);
-        margin-top: 5px;
-      }
-      .dropdown-submenu > a::after {
-        display: inline-block !important;
-        margin-left: auto;
+        box-shadow: none;
       }
     }
 
@@ -782,10 +777,10 @@
               <li><a class="dropdown-item" href="#">Perpustakaan</a></li>
               <li><a class="dropdown-item" href="#">Kurikulum</a></li>
               
-              <!-- SUB-MENU SARPRAS BERBERTINGKAT (DIPERBAIKI UNTUK MOBILE & DESKTOP) -->
+              <!-- SUB-MENU SARPRAS BERBERTINGKAT -->
               <li class="dropdown-submenu dropend">
-                <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Sarpras
+                <a class="dropdown-item dropdown-toggle d-flex justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span>Sarpras</span> <i class="fa-solid fa-chevron-right fs-7"></i>
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#"><i class="fa-solid fa-boxes-stacked me-2 text-warning"></i> Inventaris Madrasah</a></li>
@@ -1188,10 +1183,10 @@
       loadData(); 
       initSmoothAutoScroll();
       initSholatWidget();
-      initMobileSubmenus();
+      initMobileSubmenus(); 
     });
 
-    // Perbaikan Interaksi Klik Submenu di Mobile (Agar Sarpras Bisa Terbuka Saat Disentuh di HP)
+    // Fungsi pengendali klik sub-menu di HP (Mobile)
     function initMobileSubmenus() {
       document.querySelectorAll('.dropdown-submenu > a').forEach(el => {
         el.addEventListener('click', function(e) {
