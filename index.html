@@ -53,7 +53,6 @@
       margin-top: 0;
     }
 
-    /* PENGATURAN TAMPILAN DESKTOP VS MOBILE UNTUK SARPRAS */
     @media (min-width: 992px) {
       .dropdown:hover > .dropdown-menu {
         display: block;
@@ -129,7 +128,6 @@
       box-shadow: inset 3px 0 0 var(--gold-accent), 0 0 10px rgba(217, 119, 6, 0.3);
     }
     
-    /* EFEK MELAYANG (SLIDE UP & FADE IN) */
     .hero-image-banner-box {
       position: relative;
       width: 100%;
@@ -156,7 +154,6 @@
       object-fit: cover;
     }
     
-    /* WHATSAPP CENTER */
     .hero-wa-badge-absolute {
       position: absolute;
       bottom: 15px;
@@ -195,13 +192,6 @@
       padding: 6px 14px;
     }
 
-    @media (max-width: 576px) {
-      .hero-wa-badge-absolute { bottom: 10px; right: 10px; }
-      .wa-label { font-size: 0.6rem; padding: 4px 8px; }
-      .wa-number { font-size: 0.7rem; padding: 4px 10px; }
-    }
-
-    /* NEWS SLIDER VERTICAL */
     .news-slider-container {
       display: flex;
       gap: 16px;
@@ -230,11 +220,7 @@
       background-color: #000;
       border: 1px solid rgba(255,255,255,0.1);
     }
-    .card-img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
     .card-text-wrapper { padding: 8px 2px; text-align: left; }
     .card-text-wrapper .badge-kat {
       display: inline-block;
@@ -258,7 +244,6 @@
       overflow: hidden;
     }
 
-    /* SLIDER CONTROLS */
     .slider-nav-wrapper { position: relative; width: 100%; }
     .btn-slide-control {
       position: absolute;
@@ -282,7 +267,6 @@
     .btn-prev { left: -8px; }
     .btn-next { right: -8px; }
 
-    /* TICKER BAR */
     .ticker-container {
       background-color: #fff;
       border-radius: 8px;
@@ -314,7 +298,6 @@
       100% { transform: translate3d(-100%, 0, 0); }
     }
 
-    /* SECTION TERKINI & TERPOPULER */
     .pojok-aser-section {
       background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f8fafc 100%);
       border: 1px solid #bbf7d0;
@@ -363,7 +346,6 @@
     .popular-kat { font-size: 0.6rem; font-weight: 700; color: #047857; text-transform: uppercase; margin-bottom: 2px; }
     .popular-title { font-size: 0.8rem; font-weight: 700; color: #1e293b; line-height: 1.3; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-    /* SARANA, PROGRAM, EKSKUL, PRESTASI */
     .ringkasan-sarana-container, .program-unggulan-container, .ekskul-container {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -405,7 +387,6 @@
     .sarana-card-badge, .program-card-badge { display: inline-block; background-color: #ecfdf5; color: #047857; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; border: 1px solid #bbf7d0; }
     .sarana-card-title, .program-card-title, .ekskul-title { font-size: 0.95rem; font-weight: 800; color: #1e293b; margin-bottom: 8px; }
 
-    /* PRESTASI */
     .prestasi-section-container { margin-top: 40px; }
     .prestasi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     @media (max-width: 992px) { .prestasi-grid { grid-template-columns: 1fr; } }
@@ -418,7 +399,6 @@
     .prestasi-item-title { font-size: 1.05rem; font-weight: 900; color: #1e293b; margin-bottom: 8px; }
     .prestasi-desc { font-size: 0.8rem; color: #4b5563; line-height: 1.4; margin-bottom: 15px; }
 
-    /* JADWAL SHOLAT */
     .jadwal-sholat-full-section {
       background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 50%, #e6f4ea 100%);
       border-top: 1px solid #a7f3d0;
@@ -752,6 +732,9 @@
         <button class="btn btn-outline-danger btn-sm" onclick="logoutAdmin()"><i class="fa-solid fa-right-from-bracket me-1"></i> Keluar</button>
       </div>
 
+      <!-- NOTIFIKASI ALERT / STATUS BERHASIL -->
+      <div id="adminAlertBox" class="alert d-none shadow-sm fw-bold mb-4" role="alert"></div>
+
       <div class="card card-custom p-3 p-md-4 mb-4">
         <h5 class="fw-bold text-primary mb-3"><i class="fa-solid fa-newspaper me-1"></i> 1. Form Unggah Berita / Kegiatan Baru</h5>
         <form id="formBerita">
@@ -774,14 +757,15 @@
             </div>
           </div>
           <div class="mb-3">
-            <label class="form-label fw-bold">Link Foto (Google Drive / Internet)</label>
-            <input type="text" id="bGambar" class="form-control" required>
+            <label class="form-label fw-bold">Pilih Foto Kegiatan (Otomatis Masuk Google Drive)</label>
+            <input type="file" id="bFileFoto" class="form-control" accept="image/*" required>
+            <small class="text-muted">Format gambar (JPG, PNG, WEBP). Foto akan langsung disimpan di folder Google Drive madrasah.</small>
           </div>
           <div class="mb-3">
             <label class="form-label fw-bold">Ringkasan / Isi Berita</label>
             <textarea id="bRingkasan" class="form-control" rows="3" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary px-4 w-100 fw-bold">Unggah Berita ke Database</button>
+          <button type="submit" id="btnSubmitBerita" class="btn btn-primary px-4 w-100 fw-bold">Unggah Berita ke Database</button>
         </form>
       </div>
 
@@ -908,7 +892,6 @@
       initMobileSubmenus(); 
     });
 
-    // JAVASCRIPT UNTUK MEMBUKA SUB-MENU SARPRAS DI HP SAAT DIKLIK
     function initMobileSubmenus() {
       document.querySelectorAll('.dropdown-submenu > a').forEach(el => {
         el.addEventListener('click', function(e) {
@@ -1120,35 +1103,69 @@
       showSection('home');
     }
 
+    function showAdminAlert(message, type = 'success') {
+      const alertBox = document.getElementById('adminAlertBox');
+      alertBox.className = `alert alert-${type} shadow-sm fw-bold mb-4`;
+      alertBox.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-triangle-exclamation'} me-2"></i> ${message}`;
+      alertBox.classList.remove('d-none');
+    }
+
+    // FORM UNGGAH BERITA DENGAN KONVERSI FILE FOTO KE BASE64
     document.getElementById('formBerita').addEventListener('submit', function(e) {
       e.preventDefault();
-      const payload = {
-        action: 'saveBerita',
-        judul: document.getElementById('bJudul').value.trim(),
-        kategori: document.getElementById('bKategori').value,
-        tanggal: document.getElementById('bTanggal').value,
-        gambar: document.getElementById('bGambar').value.trim(),
-        ringkasan: document.getElementById('bRingkasan').value.trim(),
-        isi: document.getElementById('bRingkasan').value.trim()
+      const judulVal = document.getElementById('bJudul').value.trim();
+      const fileInput = document.getElementById('bFileFoto');
+      const btn = document.getElementById('btnSubmitBerita');
+
+      if (fileInput.files.length === 0) {
+        alert("Silakan pilih foto terlebih dahulu!");
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      btn.disabled = true;
+      btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Mengunggah foto ke Google Drive...`;
+
+      reader.onload = function(event) {
+        const base64String = event.target.result.split(',')[1];
+        
+        const payload = {
+          action: 'saveBerita',
+          judul: judulVal,
+          kategori: document.getElementById('bKategori').value,
+          tanggal: document.getElementById('bTanggal').value,
+          ringkasan: document.getElementById('bRingkasan').value.trim(),
+          fileBase64: base64String,
+          fileName: file.name,
+          mimeType: file.type
+        };
+
+        fetch(GAS_URL, {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        })
+        .then(res => res.json())
+        .then(res => {
+          btn.disabled = false;
+          btn.innerHTML = `Unggah Berita ke Database`;
+          if (res.success) {
+            showAdminAlert(`SUKSES! Berita "${judulVal}" & foto berhasil disimpan di Google Sheet & Drive!`, 'success');
+            document.getElementById('formBerita').reset();
+            loadData();
+          } else {
+            showAdminAlert("Gagal: " + res.message, 'danger');
+          }
+        })
+        .catch(err => {
+          btn.disabled = false;
+          btn.innerHTML = `Unggah Berita ke Database`;
+          showAdminAlert("Terjadi kesalahan jaringan.", 'danger');
+        });
       };
 
-      alert("Mengirim berita ke database...");
-
-      fetch(GAS_URL, {
-        method: 'POST',
-        body: JSON.stringify(payload)
-      })
-      .then(res => res.json())
-      .then(res => {
-        if (res.success) {
-          alert("Berhasil! " + res.message);
-          document.getElementById('formBerita').reset();
-          loadData();
-        } else {
-          alert("Gagal: " + res.message);
-        }
-      })
-      .catch(err => alert("Terjadi kesalahan jaringan."));
+      reader.readAsDataURL(file);
     });
 
     document.getElementById('formIndeks').addEventListener('submit', function(e) {
@@ -1158,8 +1175,6 @@
         action: 'saveIndeks',
         indeks: indeksVal
       };
-
-      alert("Menyimpan teks indeks baru...");
 
       fetch(GAS_URL, {
         method: 'POST',
