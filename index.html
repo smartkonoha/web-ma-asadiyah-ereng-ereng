@@ -883,7 +883,7 @@
 
     let appData = { berita: [], profil: [] };
     let isHovered = false;
-    let scrollSpeed = 0.5;
+    let scrollSpeed = 0.8; // Kecepatan geser foto diperhalus
 
     document.addEventListener('DOMContentLoaded', () => { 
       loadData(); 
@@ -924,7 +924,7 @@
     }
 
     function loadData() {
-      fetch(`${GAS_URL}?source=github`)
+      fetch(`${GAS_URL}?source=github`, { method: 'GET', redirect: 'follow' })
         .then(response => response.json())
         .then(res => {
           appData = res;
@@ -965,6 +965,7 @@
       if(fLogo) fLogo.src = logoUrl;
     }
 
+    // FUNGSI AUTO-SCROLL FOTO BERGERAK OTOMATIS YANG DIPERBAIKI
     function initSmoothAutoScroll() {
       const container = document.getElementById('newsSliderContainer');
       const wrapper = document.getElementById('sliderWrapper');
@@ -976,6 +977,7 @@
       function step() {
         if (!isHovered) {
           container.scrollLeft += scrollSpeed;
+          // Jika sudah sampai ujung kanan, kembali ke awal dengan mulus
           if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 2) {
             container.scrollLeft = 0;
           }
@@ -1083,7 +1085,10 @@
       const u = document.getElementById('loginUser').value.trim();
       const p = document.getElementById('loginPass').value.trim();
       
-      fetch(`${GAS_URL}?source=github&action=login&user=${encodeURIComponent(u)}&pass=${encodeURIComponent(p)}`)
+      fetch(`${GAS_URL}?source=github&action=login&user=${encodeURIComponent(u)}&pass=${encodeURIComponent(p)}`, {
+        method: 'GET',
+        redirect: 'follow'
+      })
         .then(res => res.json())
         .then(res => {
           if(res.success) {
@@ -1110,7 +1115,7 @@
       alertBox.classList.remove('d-none');
     }
 
-    // FORM UNGGAH BERITA (DIPERBAIKI AGAR KEBAL CORS & REDIRECT)
+    // FORM UNGGAH BERITA (DIPERBAIKI AGAR AMAN & TIDAK ERROR)
     document.getElementById('formBerita').addEventListener('submit', function(e) {
       e.preventDefault();
       const judulVal = document.getElementById('bJudul').value.trim();
@@ -1145,6 +1150,7 @@
         fetch(GAS_URL, {
           method: 'POST',
           redirect: 'follow',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(payload)
         })
         .then(res => res.text())
@@ -1190,6 +1196,7 @@
       fetch(GAS_URL, {
         method: 'POST',
         redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       })
       .then(res => res.text())
