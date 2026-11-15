@@ -432,7 +432,7 @@
   <div id="loadingOverlay">
     <div class="text-center">
       <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
-      <h6 class="fw-bold text-dark">Memuat Portal Berita...</h6>
+      <h6 class="fw-bold text-dark">Memuat Portal Dokumentasi...</h6>
     </div>
   </div>
 
@@ -557,7 +557,7 @@
       </div>
 
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="fw-bold text-dark mb-0 fs-5"><i class="fa-solid fa-newspaper text-primary me-2"></i> Berita & Kegiatan Terbaru</h4>
+        <h4 class="fw-bold text-dark mb-0 fs-5"><i class="fa-solid fa-images text-primary me-2"></i> Dokumentasi Madrasah</h4>
       </div>
       
       <div class="slider-nav-wrapper px-md-2" id="sliderWrapper">
@@ -736,36 +736,24 @@
       <div id="adminAlertBox" class="alert d-none shadow-sm fw-bold mb-4" role="alert"></div>
 
       <div class="card card-custom p-3 p-md-4 mb-4">
-        <h5 class="fw-bold text-primary mb-3"><i class="fa-solid fa-newspaper me-1"></i> 1. Form Unggah Berita / Kegiatan Baru</h5>
+        <h5 class="fw-bold text-primary mb-3"><i class="fa-solid fa-image me-1"></i> 1. Upload Foto Dokumentasi</h5>
         <form id="formBerita">
           <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label fw-bold">Judul Kegiatan</label>
-              <input type="text" id="bJudul" class="form-control" required>
+            <div class="col-md-12 mb-3">
+              <label class="form-label fw-bold">Judul Foto Dokumentasi</label>
+              <input type="text" id="bJudul" class="form-control" placeholder="Contoh: Kegiatan Ekstrakurikuler Pramuka" required>
             </div>
-            <div class="col-md-3 mb-3">
-              <label class="form-label fw-bold">Kategori</label>
-              <select id="bKategori" class="form-control" required>
-                <option value="Kegiatan Madrasah">Kegiatan Madrasah</option>
-                <option value="Pengumuman">Pengumuman</option>
-                <option value="Prestasi">Prestasi</option>
-              </select>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label class="form-label fw-bold">Tanggal</label>
-              <input type="date" id="bTanggal" class="form-control" required>
-            </div>
+            <!-- Input Kategori & Tanggal disembunyikan otomatis untuk menjaga database & logika backend tetap kompatibel -->
+            <input type="hidden" id="bKategori" value="Kegiatan Madrasah">
+            <input type="hidden" id="bTanggal" value="">
+            <input type="hidden" id="bRingkasan" value="Dokumentasi Madrasah">
           </div>
           <div class="mb-3">
-            <label class="form-label fw-bold">Pilih Foto Kegiatan (Otomatis Masuk Google Drive)</label>
+            <label class="form-label fw-bold">Pilih File Foto (Otomatis Masuk Google Drive)</label>
             <input type="file" id="bFileFoto" class="form-control" accept="image/*" required>
             <small class="text-muted">Format gambar (JPG, PNG, WEBP). Foto akan langsung disimpan di folder Google Drive madrasah.</small>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-bold">Ringkasan / Isi Berita</label>
-            <textarea id="bRingkasan" class="form-control" rows="3" required></textarea>
-          </div>
-          <button type="submit" id="btnSubmitBerita" class="btn btn-primary px-4 w-100 fw-bold">Unggah Berita ke Database</button>
+          <button type="submit" id="btnSubmitBerita" class="btn btn-primary px-4 w-100 fw-bold">Unggah Dokumentasi ke Database</button>
         </form>
       </div>
 
@@ -883,7 +871,7 @@
 
     let appData = { berita: [], profil: [] };
     let isHovered = false;
-    let scrollSpeed = 0.8; // Kecepatan geser foto diperhalus
+    let scrollSpeed = 0.8;
 
     document.addEventListener('DOMContentLoaded', () => { 
       loadData(); 
@@ -965,7 +953,6 @@
       if(fLogo) fLogo.src = logoUrl;
     }
 
-    // FUNGSI AUTO-SCROLL FOTO BERGERAK OTOMATIS YANG DIPERBAIKI
     function initSmoothAutoScroll() {
       const container = document.getElementById('newsSliderContainer');
       const wrapper = document.getElementById('sliderWrapper');
@@ -977,7 +964,6 @@
       function step() {
         if (!isHovered) {
           container.scrollLeft += scrollSpeed;
-          // Jika sudah sampai ujung kanan, kembali ke awal dengan mulus
           if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 2) {
             container.scrollLeft = 0;
           }
@@ -1002,15 +988,15 @@
       const terpopulerContainer = document.getElementById('terpopulerContainer');
 
       if (!appData.berita || appData.berita.length === 0) {
-        terkiniContainer.innerHTML = '<div class="text-muted text-center py-4 col-12">Belum ada berita.</div>';
+        terkiniContainer.innerHTML = '<div class="text-muted text-center py-4 col-12">Belum ada dokumentasi.</div>';
         terpopulerContainer.innerHTML = '<div class="text-muted text-center py-4">Belum ada data.</div>';
         return;
       }
 
       let terkiniList = appData.berita.slice(0, 2);
       terkiniContainer.innerHTML = terkiniList.map(item => {
-        let title = item.judul || item.Judul || 'Kegiatan';
-        let kat = item.kategori || item.Kategori || 'INFORMASI';
+        let title = item.judul || item.Judul || 'Dokumentasi';
+        let kat = item.kategori || item.Kategori || 'DOKUMENTASI';
         let img = fixDriveUrl(item.gambar || item.Gambar);
         let date = item.tanggal || item.Tanggal || '';
         return `
@@ -1019,7 +1005,7 @@
               <div class="terkini-img-box"><img src="${img}" class="terkini-img" onerror="this.src='https://via.placeholder.com/400x220?text=Foto'"></div>
               <div class="terkini-body">
                 <div><span class="terkini-kat">${kat}</span><h5 class="terkini-title">${title}</h5></div>
-                <span class="news-date"><i class="fa-regular fa-calendar me-1"></i> ${date}</span>
+                ${date ? `<span class="news-date"><i class="fa-regular fa-calendar me-1"></i> ${date}</span>` : ''}
               </div>
             </div>
           </div>
@@ -1028,8 +1014,8 @@
 
       let popularList = appData.berita.slice(0, 4);
       terpopulerContainer.innerHTML = popularList.map((item, index) => {
-        let title = item.judul || item.Judul || 'Kegiatan';
-        let kat = item.kategori || item.Kategori || 'Berita';
+        let title = item.judul || item.Judul || 'Dokumentasi';
+        let kat = item.kategori || item.Kategori || 'Dokumentasi';
         let date = item.tanggal || item.Tanggal || '';
         return `
           <div class="popular-item">
@@ -1037,7 +1023,7 @@
             <div class="popular-content">
               <span class="popular-kat">${kat}</span>
               <h6 class="popular-title">${title}</h6>
-              <span class="news-date" style="font-size: 0.7rem;"><i class="fa-regular fa-calendar me-1"></i> ${date}</span>
+              ${date ? `<span class="news-date" style="font-size: 0.7rem;"><i class="fa-regular fa-calendar me-1"></i> ${date}</span>` : ''}
             </div>
           </div>
         `;
@@ -1047,12 +1033,12 @@
     function renderPublicNews() {
       const container = document.getElementById('newsSliderContainer');
       if (!appData.berita || appData.berita.length === 0) {
-        container.innerHTML = '<div class="text-center text-muted py-5 w-100">Belum ada berita atau kegiatan.</div>';
+        container.innerHTML = '<div class="text-center text-muted py-5 w-100">Belum ada foto dokumentasi.</div>';
         return;
       }
       container.innerHTML = appData.berita.map(b => {
-        let titleText = b.judul || b.Judul || 'Kegiatan Madrasah';
-        let categoryText = b.kategori || b.Kategori || 'Kegiatan';
+        let titleText = b.judul || b.Judul || 'Dokumentasi Madrasah';
+        let categoryText = b.kategori || b.Kategori || 'Dokumentasi';
         let imageUrl = fixDriveUrl(b.gambar || b.Gambar);
         return `
           <div class="card-vertical-external">
@@ -1115,7 +1101,7 @@
       alertBox.classList.remove('d-none');
     }
 
-    // FORM UNGGAH BERITA (DIPERBAIKI AGAR AMAN & TIDAK ERROR)
+    // FORM UPLOAD FOTO DOKUMENTASI (YANG DISEMPURNAKAN)
     document.getElementById('formBerita').addEventListener('submit', function(e) {
       e.preventDefault();
       const judulVal = document.getElementById('bJudul').value.trim();
@@ -1159,14 +1145,14 @@
           try {
             res = JSON.parse(text);
           } catch (err) {
-            res = { success: true, message: 'Berita berhasil diunggah!' };
+            res = { success: true, message: 'Dokumentasi berhasil diunggah!' };
           }
 
           btn.disabled = false;
-          btn.innerHTML = `Unggah Berita ke Database`;
+          btn.innerHTML = `Unggah Dokumentasi ke Database`;
           
           if (res.success !== false) {
-            showAdminAlert(`SUKSES! Berita "${judulVal}" & foto berhasil disimpan di Google Sheet & Drive!`, 'success');
+            showAdminAlert(`SUKSES! Foto & Judul "${judulVal}" berhasil disimpan di Google Sheet & Drive!`, 'success');
             document.getElementById('formBerita').reset();
             loadData();
           } else {
@@ -1175,8 +1161,8 @@
         })
         .catch(err => {
           btn.disabled = false;
-          btn.innerHTML = `Unggah Berita ke Database`;
-          showAdminAlert(`SUKSES! Silakan cek halaman beranda, berita "${judulVal}" telah diproses.`, 'success');
+          btn.innerHTML = `Unggah Dokumentasi ke Database`;
+          showAdminAlert(`SUKSES! Silakan cek halaman beranda, dokumentasi "${judulVal}" telah diproses.`, 'success');
           document.getElementById('formBerita').reset();
           loadData();
         });
